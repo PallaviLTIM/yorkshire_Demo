@@ -1,0 +1,25 @@
+body{
+    width: 1440px;
+    height: 1024px;
+    top: 1688px;
+    /* left: -349px; */
+    background-image: url('./images/login_page_background.png');
+    background-size: auto;
+}
+
+.login-container{
+    width: Fixed (720px);
+height: Hug (527px);
+top: 25%;
+left: 25%;
+padding: 60px;
+border-radius: 4px;
+border: 1px;
+gap: 12px;
+
+}
+.img_login{
+    width: 372px;
+    height: 143px;
+
+}
