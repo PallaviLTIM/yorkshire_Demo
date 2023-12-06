@@ -1,11 +1,14 @@
-import './App.css';
-import Login from './pages/Login';
-
+// import './App.css';
+// import Login from './pages/Login';
+// import Header from './pages/Header';
+import Certificate from './pages/Certificate'
 
 function App() {
   return (
     <div className="App">
-    <Login></Login>
+      <Certificate></Certificate>
+      {/* <Header></Header> */}
+    {/* <Login></Login> */}
     </div>
   );
 }
