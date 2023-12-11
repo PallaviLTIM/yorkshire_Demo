@@ -1,7 +1,6 @@
-// import './App.css';
 // import Login from './pages/Login';
 // import Header from './pages/Header';
-import Certificate from './pages/Certificate'
+import Certificate from './pages/Certificate';
 
 function App() {
   return (
