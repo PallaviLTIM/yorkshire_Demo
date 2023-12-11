@@ -5,15 +5,13 @@ import SectionOneTab from './SectionOneTab';
 import SectionTwoTab from './SectionTwoTab';
 import SectionThreeTab from './SectionThreeTab';
 import SectionFourTab from './SectionFourTab';
-import Handover from './handover';
-import Notes from './notes';
 
 function TabComponent() {
   return (
     <>
-    <Box display="flex"  justifyContent="end">
-      <Button variant="outlined" sx={{mr:"5px"}}>Submit YW for Approval</Button>
-      <Button variant="contained" >Save</Button>
+    <Box>
+      <Button variant="outlined" >Submit YW for Approval</Button>
+      <Button variant="contained">Save</Button>
     </Box>
     <Tabs
       defaultActiveKey="test-tab"
@@ -32,15 +30,15 @@ function TabComponent() {
       <Tab eventKey="section4" title="Section 4">
         <SectionFourTab></SectionFourTab>
       </Tab>
-      <Tab eventKey="Handover/Handback" title="Handover/Handback">
-        <Handover></Handover>
-      </Tab>
-      <Tab eventKey="Notes" title="Notes">
-        <Notes></Notes>
-      </Tab>
-      {/* <Tab eventKey="Change History" title="Change History">
+      <Tab eventKey="handover" title="Handover/Handback">
         <SectionFourTab></SectionFourTab>
-      </Tab> */}
+      </Tab>
+      <Tab eventKey="notes" title="Notes">
+        <SectionFourTab></SectionFourTab>
+      </Tab>
+      <Tab eventKey="history" title="Change History">
+        <SectionFourTab></SectionFourTab>
+      </Tab>
     </Tabs>
     </>
   );
