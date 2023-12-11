@@ -13,9 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import logo from '../images/header-logo.png';
 
-const pages = ['Home', 'Certification', 'Handover/Handback', 'Notes', 'Account'];
-const settings = ['Home', 'Certification', 'Handover/Handback', 'Notes', 'Account', 'Logout'];
+// const pages = ['Home', 'Certification', 'Handover/Handback', 'Notes', 'Account'];
+const settings = ['Account', 'Logout'];
+
+const pages = [];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,11 +40,10 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className='bg-appbar' >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="a"
@@ -57,8 +59,20 @@ function Header() {
             }}
           >
             LOGO1
-          </Typography>
-          
+          </Typography> */}
+
+          <Box
+            component="img"
+            sx={{
+              height: 60,
+              width: 155,
+              maxHeight: { xs: 233, md: 167 },
+              maxWidth: { xs: 350, md: 250 },
+            }}
+            alt="The house from the offer."
+            src={logo}
+          />
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -96,7 +110,7 @@ function Header() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -114,7 +128,7 @@ function Header() {
             }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button

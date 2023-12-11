@@ -3,10 +3,11 @@ import React, { useState }  from 'react';
 import { Formik, useFormik } from 'formik';
 import { LoginSchema } from "../utils/Schema";
 import logo from '../images/logo.png' // relative path to image
+import { Link, useNavigate, navigate } from "react-router-dom";
 
 function Login() {
     const [loading, setLoading] = useState(false);
-  //let navigate = useNavigate();
+  let navigate = useNavigate();
   //let dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -20,7 +21,7 @@ function Login() {
       // console.log(values);
       const { email, password } = values;
 
-      const response = await fetch("http://localhost:5000/api/login-user", {
+     /* const response = await fetch("http://localhost:5000/api/login-user", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -31,7 +32,13 @@ function Login() {
         body: formData,
       });
 
-      const data = await response.json();
+      const data = await response.json();*/
+
+      let data = {
+        'username': 'admin@gmail.com',
+        'password': 'admin123',
+        'status': 'ok'
+      }
       if (data) {
         if (data.status == "ok") {
           localStorage.setItem("user", JSON.stringify(data));
@@ -40,7 +47,7 @@ function Login() {
           //   email: email,
           // };
           // dispatch({ type: "ADD_USER", payload: payload });
-    //      navigate("/profile");
+         navigate("/profile");
         }
       }
       // console.log("res1", data.data);

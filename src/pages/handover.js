@@ -2,7 +2,7 @@ import {  Box,Grid, TextField, Typography} from '@mui/material';
 
 
 
-export function Handover() {
+function Handover() {
   return (
     <Box p="15px">   
           <Typography fontWeight="600" color="#131C42">Handover/Handback</Typography>
