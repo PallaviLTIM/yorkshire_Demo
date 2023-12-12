@@ -44,6 +44,13 @@
     border-radius: 4px;
     border: 1px;
     gap: 12px;
+    /* height: Hug (527px);
+    top: 25%;
+    left: 25%;
+    padding: 60px;
+    border-radius: 4px;
+    border: 1px;
+    gap: 12px; */
 
 }
 .img_login{
@@ -64,4 +71,14 @@
 
 .MuiBox-root .css-1lvtzne{
     display: none;
+}
+.test-tab-label{
+    display: flex;
+    padding-left: 5px;
+}
+.heading-fl{
+    float: inline-start !important;
+}
+.tab-content{
+    border: 1px solid #524b4b;
 }
