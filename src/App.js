@@ -1,15 +1,29 @@
-// import './App.css';
-// import Login from './pages/Login';
-// import Header from './pages/Header';
-import Certificate from './pages/Certificate'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from './pages/Login';
+import Certificate from './pages/Certificate';
+import NoPage from "./pages/NoPage";
+import Sidebar from "./pages/Sidebar";
+import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path="/" element={<Login />}>           */}
+            <Route path="certification" element={<Sidebar />} />
+            <Route index element={<Sidebar />} />
+            <Route path="account" element={<Profile />} />
+            <Route path="*" element={<NoPage />} />
+          {/* </Route> */}
+        </Routes>
+      </BrowserRouter>
+    
+    {/* <div className="App">
       <Certificate></Certificate>
-      {/* <Header></Header> */}
-    {/* <Login></Login> */}
-    </div>
+    </div> */}
+    </>
   );
 }
 
