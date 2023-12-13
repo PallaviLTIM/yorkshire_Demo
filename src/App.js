@@ -5,6 +5,7 @@ import NoPage from "./pages/NoPage";
 import Sidebar from "./pages/Sidebar";
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import DataTable from "./pages/Certificate-List";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="account" element={<Profile />} />
             <Route path="*" element={<NoPage />} />
           {/* </Route> */}
+          <Route path='/certificate-list' element={<DataTable/>}/>
         </Routes>
       </BrowserRouter>
     
