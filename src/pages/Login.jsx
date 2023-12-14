@@ -16,9 +16,8 @@ function Login() {
     },
     validationSchema: LoginSchema,
     onSubmit: async (values, { resetForm }) => {
-      // alert("test");
+     
       const formData = JSON.stringify(values);
-      // console.log(values);
       const { email, password } = values;
 
      /* const response = await fetch("http://localhost:5000/api/login-user", {
@@ -39,15 +38,31 @@ function Login() {
         'password': 'admin123',
         'status': 'ok'
       }
+      let response = {};
       if (data) {
-        if (data.status == "ok") {
+        if (data.status === "ok" && data.username === email && data.password === password) {
           localStorage.setItem("user", JSON.stringify(data));
           // console.log("data", data.email);
           // const payload = {
           //   email: email,
           // };
           // dispatch({ type: "ADD_USER", payload: payload });
-         navigate("/profile");
+          response = {  
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRvbSBBZGVuYSIsIm5iZiI6MTcwMjM3MzA0NCwiZXhwIjoxNzAyNDU5NDQ0LCJpYXQiOjE3MDIzNzMwNDR9.wgwVZm5UoqGJWrh-OGHD_YgPw1u4uFaoln7HhByvP48",  
+              "message": "Login successful",  
+              "user": {    
+                    "id": "1003",    
+                    "name": "Tom Adena",    
+                    "role": "Authorized Person",    
+                    "company": "Yorkshire Water",    
+                    "mobileNumber": "7654320900"  
+              }
+          };
+          localStorage.setItem('username', response.user.name);
+          localStorage.setItem('role', response.user.role);
+          localStorage.setItem('mobileNumber', response.user.mobileNumber);
+          localStorage.setItem('token', response.token);
+          navigate("/profile");
         }
       }
       // console.log("res1", data.data);
@@ -75,7 +90,7 @@ function Login() {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Email address"
+                      placeholder="Username"
                       name="email"
                       onChange={formik.handleChange}
                       value={formik.values.email}

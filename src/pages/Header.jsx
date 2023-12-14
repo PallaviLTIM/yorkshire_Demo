@@ -14,6 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import logo from '../images/header-logo.png';
+import { assertBooleanLiteralTypeAnnotation } from '@babel/types';
+import { Link, useNavigate } from "react-router-dom";
 
 // const pages = ['Home', 'Certification', 'Handover/Handback', 'Notes', 'Account'];
 const settings = ['Account', 'Logout'];
@@ -21,6 +23,9 @@ const settings = ['Account', 'Logout'];
 const pages = [];
 
 function Header() {
+
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -31,6 +36,8 @@ function Header() {
     setAnchorElUser(event.currentTarget);
   };
 
+  const username = localStorage.getItem('username');
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -38,6 +45,14 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('mobileNumber');
+    navigate('/');
+  }
 
   return (
     <AppBar position="static" className='bg-appbar' >
@@ -142,9 +157,10 @@ function Header() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+             {username}
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={username} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -163,12 +179,19 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              <MenuItem key="Acccount" onClick={navigate('/profile')}>
+                  <Typography textAlign="center">Account</Typography>
+                </MenuItem>
+                <MenuItem key="Logout" onClick={handleLogout}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
             </Menu>
+           
           </Box>
         </Toolbar>
       </Container>
