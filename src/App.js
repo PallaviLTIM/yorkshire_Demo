@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import DataTable from "./pages/Certificate-List";
 
 function App() {
+  let token = localStorage.getItem('token');
   return (
     <>
       <BrowserRouter>

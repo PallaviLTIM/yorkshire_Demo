@@ -1,6 +1,7 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Button, Box } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import SectionOneTab from './SectionOneTab';
 import SectionTwoTab from './SectionTwoTab';
 import SectionThreeTab from './SectionThreeTab';
@@ -9,11 +10,12 @@ import Handover from './Handover';
 import Notes from './notes';
 
 function TabComponent() {
+  
   return (
     <>
     <Box display="flex"  justifyContent="end">
       <Button variant="outlined" sx={{mr:"5px"}}>Submit YW for Approval</Button>
-      <Button variant="contained" >Save</Button>
+      <Button type='submit' variant="contained" form="hook-form" >Save</Button>
     </Box>
     <Tabs
       defaultActiveKey="test-tab"

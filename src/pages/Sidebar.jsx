@@ -79,7 +79,7 @@ export default function Sidebar() {
       <Box component="main" className='box-container' sx={{ flexGrow: 1, p: 3, }} >
         {/* <Toolbar /> */}
         
-        {/* <Certificate></Certificate> */}
+        <Certificate></Certificate>
       </Box>
     </Box>
     </>
