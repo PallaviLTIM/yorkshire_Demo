@@ -6,7 +6,7 @@ import SectionOneTab from './SectionOneTab';
 import SectionTwoTab from './SectionTwoTab';
 import SectionThreeTab from './SectionThreeTab';
 import SectionFourTab from './SectionFourTab';
-import Handover from './handover';
+import Handover from './Handover';
 import Notes from './notes';
 
 function TabComponent() {
