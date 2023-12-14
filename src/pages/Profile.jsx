@@ -1,6 +1,10 @@
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+
 function Profile(){
     return(<>
-    Profile
+    <Header></Header>
+    <Sidebar></Sidebar>
     </>)
 }
 

@@ -7,16 +7,16 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 
 function App() {
+  let token = localStorage.getItem('token');
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          {/* <Route path="/" element={<Login />}>           */}
-            <Route path="certification" element={<Sidebar />} />
-            <Route index element={<Sidebar />} />
-            <Route path="account" element={<Profile />} />
-            <Route path="*" element={<NoPage />} />
-          {/* </Route> */}
+        <Routes>          
+            <Route path="/" element={<Login />}></Route>
+            <Route path="certification" element={<Sidebar />} ></Route>
+            <Route path="home" element={<Sidebar />} ></Route>
+            <Route path="profile" element={<Profile />} ></Route>
+            <Route path="*" element={<NoPage />} ></Route>          
         </Routes>
       </BrowserRouter>
     
