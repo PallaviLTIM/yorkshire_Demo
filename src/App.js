@@ -18,8 +18,9 @@ function App() {
             <Route index element={<Sidebar />} />
             <Route path="account" element={<Profile />} />
             <Route path="*" element={<NoPage />} />
+            <Route path='/certificate-list' element={<DataTable/>}/>
           {/* </Route> */}
-          <Route path='/certificate-list' element={<DataTable/>}/>
+
         </Routes>
       </BrowserRouter>
     

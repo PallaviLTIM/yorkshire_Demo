@@ -39,13 +39,17 @@ export default function DataTable() {
   }, []);
 
 
+  const handleRowClick = () => {
+    // alert("hello")
+  };
   const rows=certificates?.map((item,index)=>{return {id:index,Handover_Ref:item.handover_Reference,Last_Modified:item?.updatedOn!==''?item?.updaredOn:item?.createdOn,Authorized_Person:item?.authorized_Person,Contractors_Rep:item?.contractor_Representative,Start_Date:item?.commence_Date}})
 
 
   return (
-    <><Box mb={10}><Header/></Box><Box border='1px solid' padding={2}><Typography fontWeight="600" lineHeight="45px" fontSize="30px" color="#131C42" ml={2}>Certificate list</Typography>
+    <><Box border='1px solid' padding={2}><Typography fontWeight="600" lineHeight="45px" fontSize="30px" color="#131C42" ml={2}>Certificate list</Typography>
       <Grid
         container
+        width="100%"
       >
         <Grid item xs={12} md={4} mb={2} ml={2}>
           <TextField
@@ -88,6 +92,7 @@ export default function DataTable() {
           }}
           sx={{ display: "flex", alignItems: "center", marginRight: '0px', pr: '0px' }}
           pageSizeOptions={[5, 10]}
+          onRowClick={handleRowClick}
           checkboxSelection />
       </Box></Box></>
   );
