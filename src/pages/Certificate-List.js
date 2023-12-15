@@ -4,7 +4,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Box, Button, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
-import Header from './Header';
+import { ViewCertificate } from './View-Certificate';
+
 
 const columns = [
   {field:'Handover_Ref',headerName:'Handover Ref',width:250},
@@ -27,6 +28,8 @@ const columns = [
 export default function DataTable() {
 
   const [certificates, setCertificates] = useState([]);
+  const [showList, setShowList] = useState(true);
+  const [certificateDetails,setCertificateDetails]=useState([])
   useEffect(() => {
      fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
         .then((response) => response.json())
@@ -40,13 +43,23 @@ export default function DataTable() {
 
 
   const handleRowClick = () => {
-    // alert("hello")
+    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
+    .then((response) => response.json())
+    .then((data) => {
+      setCertificateDetails(data);
+    })
+    .catch((err) => {
+       console.log(err.message);
+    });
+    setShowList(false)  
+
   };
+  console.log('cert',certificateDetails)
   const rows=certificates?.map((item,index)=>{return {id:index,Handover_Ref:item.handover_Reference,Last_Modified:item?.updatedOn!==''?item?.updaredOn:item?.createdOn,Authorized_Person:item?.authorized_Person,Contractors_Rep:item?.contractor_Representative,Start_Date:item?.commence_Date}})
 
 
   return (
-    <><Box border='1px solid' padding={2}><Typography fontWeight="600" lineHeight="45px" fontSize="30px" color="#131C42" ml={2}>Certificate list</Typography>
+    <>{showList?<Box border='1px solid' padding={2}><Typography fontWeight="600" lineHeight="45px" fontSize="30px" color="#131C42" ml={2}>Certificate list</Typography>
       <Grid
         container
         width="100%"
@@ -94,6 +107,6 @@ export default function DataTable() {
           pageSizeOptions={[5, 10]}
           onRowClick={handleRowClick}
           checkboxSelection />
-      </Box></Box></>
+      </Box></Box>:<ViewCertificate certificateDetails={certificateDetails}/>}</>
   );
 }
