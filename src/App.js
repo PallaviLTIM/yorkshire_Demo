@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>          
             <Route path="/" element={<Login />}></Route>
-            <Route path="certification" element={<Sidebar />} ></Route>
+            <Route path="certification" element={<Certificate />} ></Route>
             <Route path="home" element={<Sidebar />} ></Route>
             <Route path="profile" element={<Profile />} ></Route>
             <Route path="*" element={<NoPage />} ></Route>          
