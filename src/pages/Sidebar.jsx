@@ -44,7 +44,7 @@ export default function Sidebar() {
         {/* <Toolbar /> */}
         <Box className='bg-sidebar'>
           <List>
-            {['Home', 'Certification', 'Account'].map((text, index) => (
+            {['Home', 'Certification','Account'].map((text, index) => (
                 <Link to='/certification'>
               <ListItem key={text} disablePadding>
                 <ListItemButton>
