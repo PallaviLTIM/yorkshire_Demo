@@ -26,11 +26,14 @@
     color: #2FB5DE !important;
     position: fixed !important;
 }
+.MuiDrawer-paper {
+    width: 184px;
+}
 .bg-sidebar{
     background: #124A87 !important;
     color: #2FB5DE !important;
     font-weight: 500 !important;
-    height: 300px !important;
+    height: 900px !important;
     margin-top: 0px;
     text-decoration: none;
 }
@@ -53,6 +56,10 @@
     gap: 12px; */
 
 }
+.mt-10{
+    margin-top: 87px !important;
+    margin-left: -60px !important;
+}
 .img_login{
     width: 372px;
     height: 143px;
@@ -68,7 +75,9 @@
     color: black !important;
     
 }
-
+.nav-link{
+    color: black !important;
+}
 .MuiBox-root .css-1lvtzne{
     display: none;
 }
@@ -80,5 +89,11 @@
     float: inline-start !important;
 }
 .tab-content{
-    border: 1px solid #524b4b;
+    border: 1px solid #ddd;
+    border-top: 0px !important;
+    margin-top: -18px;
+}
+.nav-link .active{
+    border-bottom: 0px !important;
+
 }

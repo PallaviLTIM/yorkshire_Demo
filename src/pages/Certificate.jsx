@@ -3,15 +3,41 @@ import Header from '../pages/Header';
 import TabComponent from "../pages/TabComponent";
 import Sidebar from './Sidebar';
 
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+
 function Certificate() {
   return (
     <>
-    {/* <Header></Header>
-    <Sidebar></Sidebar> */}
-    <div class="col-sm-12 mx-t3 mb-4">
-        <h2 class="text-first text-dark heading">EITSA Handover / EITSA Handback Certificate</h2>
-      </div>
-    <TabComponent></TabComponent>
+        
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid xs={12}>
+          <Header></Header>
+        </Grid>
+        <Grid xs={3}>
+          <Sidebar></Sidebar>
+        </Grid>
+        <Grid xs={9} className='mt-10'>
+          <Typography variant="h6" color="#2441E5" noWrap component="div">
+          EITSA Handover / EITSA Handback Certificate
+          </Typography>
+        <TabComponent></TabComponent>
+        </Grid>
+      </Grid>
+    </Box>      
     </>
   );
 }

@@ -44,7 +44,7 @@ export default function Sidebar() {
         {/* <Toolbar /> */}
         <Box className='bg-sidebar'>
           <List>
-            {['Home', 'Certification', 'Account'].map((text, index) => (
+            {['Home', 'Certification','Account'].map((text, index) => (
                 <Link to='/certification'>
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -61,7 +61,7 @@ export default function Sidebar() {
               </Link>
             ))}
           </List>
-          <Divider className='bg-sidebar' />
+          {/* <Divider className='bg-sidebar' /> */}
           {/* <List>
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
@@ -79,7 +79,7 @@ export default function Sidebar() {
       <Box component="main" className='box-container' sx={{ flexGrow: 1, p: 3, }} >
         {/* <Toolbar /> */}
         
-        <Certificate></Certificate>
+        {/* <Certificate></Certificate> */}
       </Box>
     </Box>
     </>
