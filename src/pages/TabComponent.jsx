@@ -6,7 +6,7 @@ import SectionOneTab from './SectionOneTab';
 import SectionTwoTab from './SectionTwoTab';
 import SectionThreeTab from './SectionThreeTab';
 import SectionFourTab from './SectionFourTab';
-import Handover from './handover';
+import Handover from './Handover';
 import Notes from './notes';
 
 function TabComponent() {
@@ -34,7 +34,7 @@ function TabComponent() {
       <Tab eventKey="section4" title="Section 4">
         <SectionFourTab></SectionFourTab>
       </Tab>
-      <Tab eventKey="Handover/Handback" title="Handover/Handback">
+      <Tab eventKey="Handover" title="Handover/Handback">
         <Handover></Handover>
       </Tab>
       <Tab eventKey="Notes" title="Notes">
