@@ -16,7 +16,7 @@ function App() {
           {/* <Route path="/" element={<Login />}>           */}
             <Route path="certification" element={<Certificate />} />
             <Route index element={<Sidebar />} />
-            <Route path="account" element={<Profile />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="*" element={<NoPage />} />
             <Route path='/certificate-list' element={<DataTable/>}/>
           {/* </Route> */}
