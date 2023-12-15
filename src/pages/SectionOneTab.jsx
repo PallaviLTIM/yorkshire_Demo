@@ -18,6 +18,7 @@ export function SectionOneTab() {
   
   const { handleSubmit } = useForm();
   const onSubmit =async e => {
+    
     let formData = {
       "type": type, 
       "mode": "Manual", 
@@ -53,6 +54,7 @@ export function SectionOneTab() {
        "isActive": "True", 
        "status": "New"
     }
+    // console.log(formData);
     // const response = await fetch("http://localhost:5000/api/login-user", {
     //     method: "POST",
     //     crossDomain: true,

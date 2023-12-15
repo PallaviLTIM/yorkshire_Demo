@@ -13,7 +13,7 @@ function TabComponent() {
   
   return (
     <>
-    <Box display="flex"  justifyContent="end">
+    <Box display="flex" className="mb-5"  justifyContent="end">
       <Button variant="outlined" sx={{mr:"5px"}}>Submit YW for Approval</Button>
       <Button type='submit' variant="contained" form="hook-form" >Save</Button>
     </Box>
