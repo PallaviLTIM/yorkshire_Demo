@@ -55,7 +55,7 @@ function Header() {
   }
 
   return (
-    <AppBar position="static" className='bg-appbar' >
+    <AppBar  className='bg-appbar' >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <Typography

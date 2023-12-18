@@ -60,11 +60,13 @@ export default function DataTable() {
 
   return (
     <>{showList?<Box border='1px solid' padding={2}><Typography fontWeight="600" lineHeight="45px" fontSize="30px" color="#131C42" ml={2}>Certificate list</Typography>
-      <Grid
+      {/* <Grid
         container
-        width="100%"
-      >
-        <Grid item xs={12} md={4} mb={2} ml={2}>
+        width="50%"
+      > */}
+        {/* <Grid item xs={12} md={4} mb={2} ml={2}> */}
+        <Box display="flex">
+        <Box mb="10px">
           <TextField
             data-testid="freesearch"
             variant="outlined"
@@ -81,18 +83,23 @@ export default function DataTable() {
                 </InputAdornment>
               ),
             }} />
-        </Grid>
-        <Grid item xs={12} md={2}>
+            </Box>
+        {/* </Grid> */}
+        {/* <Grid item xs={12} md={2}>
           <Button variant="contained">Filter</Button>
         </Grid>
         <Grid item xs={12} md={2}>
           <Button variant='outlined'> <ImportExportIcon />Sort</Button>
-        </Grid>
-        <Grid item xs={12} md={3}>
+        </Grid> */}
+        {/* <Grid item xs={12} md={5} ml="auto"> */}
+        <Box mb="10px" ml="auto">
+
           <Button variant='contained'>
             Add new certificate</Button>
-        </Grid>
-      </Grid>
+            </Box>
+            </Box>
+        {/* </Grid> */}
+      {/* </Grid> */}
       <Box>
         <DataGrid
           rows={rows}
@@ -103,7 +110,7 @@ export default function DataTable() {
               paginationModel: { page: 0, pageSize: 5 },
             },
           }}
-          sx={{ display: "flex", alignItems: "center", marginRight: '0px', pr: '0px' }}
+          sx={{ display: "flex",marginRight: '0px', pr: '0px',textAlign:"center"}}
           pageSizeOptions={[5, 10]}
           onRowClick={handleRowClick}
           checkboxSelection />
