@@ -96,11 +96,11 @@ export default function AuthCertificateList() {
           <Button variant='outlined'> <ImportExportIcon />Sort</Button>
         </Grid> */}
         {/* <Grid item xs={12} md={5} ml="auto"> */}
-        <Box mb="10px" ml="auto">
+        {/* <Box mb="10px" ml="auto">
 
           <Button variant='contained' onClick={()=>{navigate('/certification')}}>
             Add new certificate</Button>
-            </Box>
+            </Box> */}
             </Box>
         {/* </Grid> */}
       {/* </Grid> */}
