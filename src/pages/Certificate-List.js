@@ -5,7 +5,7 @@ import { Box, Button, Grid, InputAdornment, TextField, Typography } from '@mui/m
 import SearchIcon from '@mui/icons-material/Search';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import { ViewCertificate } from './View-Certificate';
-
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   {field:'Handover_Ref',headerName:'Handover Ref',width:250},
@@ -54,9 +54,10 @@ export default function DataTable() {
     setShowList(false)  
 
   };
-  console.log('cert',certificateDetails)
+  // console.log('cert',certificateDetails)
   const rows=certificates?.map((item,index)=>{return {id:index,Handover_Ref:item.handover_Reference,Last_Modified:item?.updatedOn!==''?item?.updaredOn:item?.createdOn,Authorized_Person:item?.authorized_Person,Contractors_Rep:item?.contractor_Representative,Start_Date:item?.commence_Date}})
 
+  let navigate = useNavigate();
 
   return (
     <>{showList?<Box border='1px solid' padding={2}><Typography fontWeight="600" lineHeight="45px" fontSize="30px" color="#131C42" ml={2}>Certificate list</Typography>
@@ -94,7 +95,7 @@ export default function DataTable() {
         {/* <Grid item xs={12} md={5} ml="auto"> */}
         <Box mb="10px" ml="auto">
 
-          <Button variant='contained'>
+          <Button variant='contained' onClick={()=>{navigate('/certification')}}>
             Add new certificate</Button>
             </Box>
             </Box>
