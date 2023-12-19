@@ -1,6 +1,6 @@
-import {  Box, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography, Select,MenuItem } from '@mui/material';
+import {  Box, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography, Select,MenuItem, Autocomplete } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useForm } from 'react-hook-form';
 
 
@@ -15,6 +15,61 @@ export function SectionOneTab() {
   const [contractor_telephone_number, setContractorTele] = useState('');
   const [representative_name, setRepresentative] = useState('');
   const [representative_telephone_number, setRepresentativeTele] = useState('');
+  const [authorizedPersonDetails,setAuthorizedPersonDetails]=useState()
+  const [contactorDetails,setContractorDetails]=useState()
+  const [contactorRepDetails,setContractorRepDetails]=useState()
+  const [siteOptions,setSiteOptions]=useState()
+
+
+
+    
+  useEffect(() => {
+    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
+       .then((response) => response.json())
+       .then((data) => {
+        setSiteOptions(data);
+       })
+       .catch((err) => {
+          console.log(err.message);
+       });
+ }, []);
+
+  
+  useEffect(() => {
+    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="Authorized Person"')
+       .then((response) => response.json())
+       .then((data) => {
+        setAuthorizedPersonDetails(data);
+       })
+       .catch((err) => {
+          console.log(err.message);
+       });
+ }, []);
+
+ useEffect(() => {
+  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
+     .then((response) => response.json())
+     .then((data) => {
+      setContractorDetails(data);
+     })
+     .catch((err) => {
+        console.log(err.message);
+     });
+}, []);
+
+
+useEffect(() => {
+  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
+     .then((response) => response.json())
+     .then((data) => {
+      setContractorRepDetails(data);
+     })
+     .catch((err) => {
+        console.log(err.message);
+     });
+}, []);
+
+
   
   const { handleSubmit } = useForm();
   const onSubmit =async e => {
@@ -124,15 +179,13 @@ export function SectionOneTab() {
 
             <Grid item xs={12} md={6}>
               <Typography>Site*</Typography>
-                <TextField
-                id="site"
-                name={'Site'}
-                inputProps={{
-                  maxLength: 255,
-                }}
-                fullWidth
-                placeholder="Enter site"
-                onChange={(e)=>setSite(e.target.value)}
+               <Autocomplete
+               disablePortal
+               id="equipments"
+              options={siteOptions?.map((item) => item?.name)}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} 
+              onChange={(e)=>setSite(e.target.value)}/>}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -154,15 +207,13 @@ export function SectionOneTab() {
 
             <Grid item xs={12} md={6}>
               <Typography>Authorized person name*</Typography>
-                <TextField
-                id="person_name"
-                name={'Authorized person name'}
-                inputProps={{
-                  maxLength: 255,
-                }}
-                fullWidth
-                placeholder="Enter authorized person name"
-                onChange={(e)=>setPersonname(e.target.value)}
+              <Autocomplete
+               disablePortal
+               id="authorizedPersonDetails"
+              options={authorizedPersonDetails?.map((item) => item?.name)}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} 
+              onChange={(e)=>setPersonname(e.target.value)}/>}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -181,17 +232,16 @@ export function SectionOneTab() {
 
             <Grid item xs={12} md={6}>
               <Typography>Contractor name*</Typography>
-                <TextField
-                id="contractor_name"
-                name={'Contractor name'}
-                inputProps={{
-                  maxLength: 255,
-                }}
-                fullWidth
-                placeholder="Enter contractor name"
-                onChange={(e)=>setContractorName(e.target.value)}
+              <Autocomplete
+               disablePortal
+               id="Contrator_Details"
+              options={contactorDetails?.map((item) => item?.name)}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} 
+              onChange={(e)=>setContractorName(e.target.value)}/>}
               />
             </Grid>
+            
             <Grid item xs={12} md={6}>
                 <Typography>Telephone number*</Typography>
                 <TextField
@@ -208,15 +258,13 @@ export function SectionOneTab() {
 
             <Grid item xs={12} md={6}>
               <Typography>Contactor representative name*</Typography>
-                <TextField
-                id="representative_name"
-                name={'Contactor representative name'}
-                inputProps={{
-                  maxLength: 255,
-                }}
-                fullWidth
-                placeholder="Enter contactor representative name"
-                onChange={(e)=>setRepresentative(e.target.value)}
+              <Autocomplete
+               disablePortal
+               id="ContratorRep_Details"
+              options={contactorRepDetails?.map((item) => item?.name)}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} 
+              onChange={(e)=>setRepresentative(e.target.value)}/>}
               />
             </Grid>
             <Grid item xs={12} md={6}>
