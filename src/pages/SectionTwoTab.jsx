@@ -1,4 +1,4 @@
-import {  Box, Button, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
+import {  Autocomplete, Box, Button, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FileUploadIcon from '@mui/icons-material/FileUpload'; 
 import {useEffect, useState} from "react";
@@ -18,6 +18,31 @@ export function SectionTwoTab() {
   const [isFallUnderCDM,setIsFallUnderCDM] = useState('')
   const [browsedSitePlanData,setBrowsedSitePlanData]=useState()
   const [projectDuration,setProjectDuration]=useState(0)
+  const [equipmentDetailsOptions,setEquipmentDetailsOptions]=useState()
+  const [siteOptions,setSiteOptions]=useState()
+
+
+  useEffect(() => {
+    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/equipments')
+       .then((response) => response.json())
+       .then((data) => {
+        setEquipmentDetailsOptions(data);
+       })
+       .catch((err) => {
+          console.log(err.message);
+       });
+ }, []);
+
+ useEffect(() => {
+  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
+     .then((response) => response.json())
+     .then((data) => {
+      setSiteOptions(data);
+     })
+     .catch((err) => {
+        console.log(err.message);
+     });
+}, []);
 
 
   function monthDiff(d1, d2) {
@@ -95,14 +120,14 @@ export function SectionTwoTab() {
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">  
     <Box >
      <Typography>Details(Location on site/working area(s))</Typography>
-       <TextField
-            id="location_details"
-            name={'Details'}
-            fullWidth
-            size="small"
-            placeholder="Enter location on site working areas"
-            onChange={(e)=>setLocationDetails(e.target.value)}
-          />
+             <Autocomplete
+               disablePortal
+               id="equipments"
+              options={siteOptions?.map((item) => item?.name)}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} 
+              onChange={(e)=>setLocationDetails(e.target.value)}/>}
+              />
           </Box>
           <Grid container rowSpacing={2} columnSpacing={3} mt='2px'>
            <Grid item xs={12} md={6}>
@@ -132,14 +157,14 @@ export function SectionTwoTab() {
             </Grid>
             <Grid item xs={12} md={6}>
             <Typography>Equipment to be worked on</Typography>
-           <TextField
-            id="equipment_details"
-            name={'Equipment Details'}
-            size="small"
-            fullWidth
-            placeholder="Enter details"
-            onChange={(e)=>setEquipmentDetails(e.target.value)}
-          />
+              <Autocomplete
+               disablePortal
+               id="equipments"
+              options={equipmentDetailsOptions?.map((item) => item?.name)}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} 
+              onChange={(e)=>setEquipmentDetails(e.target.value)}/>}
+              />
             </Grid>
             <Grid item xs={12} md={6}>
            <Typography>Site access arrangements</Typography>
