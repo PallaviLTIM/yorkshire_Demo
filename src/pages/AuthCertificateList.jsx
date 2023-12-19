@@ -34,8 +34,7 @@ export default function AuthCertificateList() {
   const [showList, setShowList] = useState(true);
   const [certificateDetails,setCertificateDetails]=useState([])
   useEffect(() => {
-    //  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
-     fetch('https://15187da4-1a39-4d0f-b511-f1ca4ea52b39.mock.pstmn.io/certificates')
+    fetch('https://15187da4-1a39-4d0f-b511-f1ca4ea52b39.mock.pstmn.io/certificates')
         .then((response) => response.json())
         .then((data) => {  
            setCertificates(data.filter((val,index)=>val.authorized_Person===user.name));
@@ -47,7 +46,7 @@ export default function AuthCertificateList() {
 
 
   const handleRowClick = () => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
+    fetch('https://15187da4-1a39-4d0f-b511-f1ca4ea52b39.mock.pstmn.io/certificates')
     .then((response) => response.json())
     .then((data) => {
       setCertificateDetails(data);
