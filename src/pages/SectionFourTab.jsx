@@ -1,9 +1,9 @@
 import {  Box, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
- import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
- import FileUploadIcon from '@mui/icons-material/FileUpload';
+//  import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+//  import FileUploadIcon from '@mui/icons-material/FileUpload';
 
-
-export function SectionFourTab() {
+function SectionFourTab() {
+    
   return (
     <Box p="15px">
     
@@ -28,7 +28,7 @@ export function SectionFourTab() {
           />
              <Typography mt="10px">Any other instructions/conditions</Typography>
        <TextField
-            id="site_rules"
+            id="site_rules1"
             name={'Site Rules'}
             fullWidth
             multiline
@@ -37,7 +37,7 @@ export function SectionFourTab() {
           />
              <Typography mt="10px">Need for access by YW personnel/others</Typography>
        <TextField
-            id="site_rules"
+            id="site_rules2"
             name={'Site Rules'}
             fullWidth
             multiline
@@ -46,7 +46,7 @@ export function SectionFourTab() {
           />
              <Typography mt="10px">Issue of permit to work specific tasks - electrical, non-electrical, pressure system - detail type and task</Typography>
        <TextField
-            id="site_rules"
+            id="site_rules3"
             name={'Site Rules'}
             fullWidth
             multiline

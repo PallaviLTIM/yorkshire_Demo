@@ -1,17 +1,21 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Button, Box } from '@mui/material';
+// import { useForm } from 'react-hook-form';
 import SectionOneTab from './SectionOneTab';
 import SectionTwoTab from './SectionTwoTab';
 import SectionThreeTab from './SectionThreeTab';
 import SectionFourTab from './SectionFourTab';
+import Handover from './handover';
+import Notes from './notes';
 
 function TabComponent() {
+  
   return (
     <>
-    <Box>
-      <Button variant="outlined" >Submit YW for Approval</Button>
-      <Button variant="contained">Save</Button>
+    <Box display="flex" className="mb-5"  justifyContent="end">
+      <Button variant="outlined" sx={{mr:"5px"}}>Submit YW for Approval</Button>
+      <Button type='submit' variant="contained" form="hook-form" >Save</Button>
     </Box>
     <Tabs
       defaultActiveKey="test-tab"
@@ -30,15 +34,15 @@ function TabComponent() {
       <Tab eventKey="section4" title="Section 4">
         <SectionFourTab></SectionFourTab>
       </Tab>
-      <Tab eventKey="handover" title="Handover/Handback">
-        <SectionFourTab></SectionFourTab>
+      <Tab eventKey="Handover" title="Handover/Handback">
+        <Handover></Handover>
       </Tab>
-      <Tab eventKey="notes" title="Notes">
-        <SectionFourTab></SectionFourTab>
+      <Tab eventKey="Notes" title="Notes">
+        <Notes></Notes>
       </Tab>
-      <Tab eventKey="history" title="Change History">
+      {/* <Tab eventKey="Change History" title="Change History">
         <SectionFourTab></SectionFourTab>
-      </Tab>
+      </Tab> */}
     </Tabs>
     </>
   );
