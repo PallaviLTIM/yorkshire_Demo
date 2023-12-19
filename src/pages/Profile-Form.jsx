@@ -2,9 +2,12 @@ import { Box, Grid, TextField } from "@mui/material";
 import Profile from "./Profile-Form";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
 
 function ProfileForm(){
-    let username = localStorage.getItem('username')
+    const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );  
+    const { token, user } = userDetails;
+    console.log(user);
     return(
         <>
         <Box
@@ -20,30 +23,31 @@ function ProfileForm(){
                 required
                 id="outlined-required"
                 label="Name"
-                defaultValue={username}
+                defaultValue={user.name}
                 />
                 <TextField
                 required
                 id="outlined-required"
                 label="Contact No"
-                defaultValue="Hello World"
+                defaultValue={user.mobileNumber}
                 />
             </div>   
             <div>
                 <TextField
-                required
+                disabled
                 id="outlined-required"
-                label="Password"
-                defaultValue=""
+                label="Role"
+                required
+                defaultValue={user.role}
                 />
                 <TextField
                 required
                 id="outlined-required"
-                label="Confirm Password"
-                defaultValue=""
+                label="Company"
+                defaultValue={user.company}
                 />
             </div>  
-            <div>
+            {/* <div>
                 
                 <TextField
                 required
@@ -51,7 +55,7 @@ function ProfileForm(){
                 label="Confirm Password"
                 defaultValue=""
                 />
-            </div>    
+            </div>     */}
         </Box>
         </>
     )
