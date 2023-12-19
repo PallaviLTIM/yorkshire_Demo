@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import DataTable from "./Certificate-List";
+import ProfileForm from "./Profile-Form";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -14,7 +14,7 @@ function Profile(){
               <Sidebar></Sidebar>
             </Grid>
             <Grid xs={9} className='mt-10'>
-            <DataTable></DataTable>
+              <ProfileForm></ProfileForm>
             </Grid>
           </Grid>
         </Box>  

@@ -35,7 +35,13 @@
     font-weight: 500 !important;
     height: 900px !important;
     margin-top: 0px;
+    width: 184px;
     text-decoration: none;
+}
+
+.logout-text{
+    text-decoration: none;
+    color: white;
 }
 
 .login-container{

@@ -1,10 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-
-
+import { thunk } from 'redux-thunk';
 import CommonReducer from './reducers/common-reducers';
-
 
 const store = configureStore({
   reducer: {
