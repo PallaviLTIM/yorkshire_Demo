@@ -3,7 +3,7 @@ import DataTable from "./Certificate-List";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import AuthCertificateList from "./AuthCertificateList";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 function Home(){

@@ -5,10 +5,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 // import Header from './Header'
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
 const drawerWidth = 200;
 
 export default function Sidebar() {
+  const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );  
+  const { token, user } = userDetails;
   return (
     <>
     {/* <Header></Header> */}
@@ -43,7 +46,7 @@ export default function Sidebar() {
                 </ListItemButton>
               </ListItem>
               </Link>
-
+              { (user && user.role==='Contractor' ) ?
               <Link to='/certification'>
               <ListItem key='Certification' disablePadding>
                 <ListItemButton>
@@ -55,7 +58,7 @@ export default function Sidebar() {
                 </ListItemButton>
               </ListItem>
               </Link>
-
+            : ''}
               <Link to='/profile'>
               <ListItem key='Account' disablePadding>
                 <ListItemButton>
