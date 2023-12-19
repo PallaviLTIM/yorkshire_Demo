@@ -111,6 +111,7 @@ export function SectionOneTab() {
                   id="demo-simple-select"
                   value={1}
                   fullWidth={true}
+                  disabled
                   onChange={(e)=>setStatus(e.target.value)}
                   // onChange={handleChange}
                 >                  

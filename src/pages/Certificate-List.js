@@ -110,7 +110,13 @@ export default function DataTable() {
               paginationModel: { page: 0, pageSize: 5 },
             },
           }}
-          sx={{ display: "flex",marginRight: '0px', pr: '0px',textAlign:"center"}}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            '.MuiToolbar-root': {
+              width: '100%',
+            },
+          }}
           pageSizeOptions={[5, 10]}
           onRowClick={handleRowClick}
           checkboxSelection />

@@ -1,7 +1,7 @@
 import {  Box, Button, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FileUploadIcon from '@mui/icons-material/FileUpload'; 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useForm } from 'react-hook-form';
 
 export function SectionTwoTab() {
@@ -16,9 +16,30 @@ export function SectionTwoTab() {
   const [isHealthNSaftey, setIsHealthNSaftey] = useState('');
   const [hnsfile, setHNSFile] = useState('');
   const [isFallUnderCDM,setIsFallUnderCDM] = useState('')
-  // setDuration(e) {
-  //   // completion_date commence_date
-  // };
+  const [browsedSitePlanData,setBrowsedSitePlanData]=useState()
+  const [projectDuration,setProjectDuration]=useState(0)
+
+
+  function monthDiff(d1, d2) {
+    var months;
+    months = (d1.getFullYear() - d2.getFullYear()) * 12;
+    months -= d2.getMonth();
+    months += d1.getMonth();
+    return months <= 0 ? 0 : months;   
+}
+
+  useEffect(()=>{
+   let d1=new Date(completion_date)
+   let d2=new Date(commence_date)
+  let diff= monthDiff(d1,d2)
+  setProjectDuration(diff)
+},[completion_date])
+
+
+
+  const addSitePlan = (e) => {
+    setBrowsedSitePlanData(e.target.value);
+  };
   const { handleSubmit } = useForm();
   const onSubmit =async e => {
     let certificate_id = localStorage.getItem('certificate_id');
@@ -27,6 +48,7 @@ export function SectionTwoTab() {
       "mode": "Manual", 
       "handover_Reference": "Certificate_Testing_Handover8", 
       "site_Location": location_details, 
+      "site_Plan_File":browsedSitePlanData,
       "equipments": equipment_details, 
       "access_Arrangements": site_access_arrangements, 
       "work_Description": work_details, 
@@ -67,6 +89,7 @@ export function SectionTwoTab() {
     localStorage.setItem('certificate_id',"74f5936e-0917-49e8-bef7-da0e56442f28");
 
   };
+
   return (
     <Box p="15px">
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">  
@@ -92,6 +115,8 @@ export function SectionTwoTab() {
             type="file"
             id="file"     
             name="file"
+            onClick={(e) => (e.target.value = null)}
+            onChange={(e) => addSitePlan(e)}
             style={{ 
                 cursor: "pointer",
                 position: "absolute",
@@ -154,13 +179,14 @@ export function SectionTwoTab() {
          <Typography fontSize="14px" ml="auto" component="div">(Must be within 12 months of date work commence)</Typography>
             </Grid>
           <Grid item xs={12} md={4}>
-           <Typography>Project Duration</Typography>
+           <Typography>Project Duration(in months)</Typography>
             <TextField
             id="project_duration"
             name={'Project Duration'}
             fullWidth
             placeholder="0"
             size="small"
+            value={projectDuration}
           />
             </Grid>
             <Grid item xs={12} md={8}>
