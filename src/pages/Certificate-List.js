@@ -54,7 +54,7 @@ export default function DataTable() {
     setShowList(false)  
 
   };
-  // console.log('cert',certificateDetails)
+  console.log('cert',certificateDetails)
   const rows=certificates?.map((item,index)=>{return {id:index,Handover_Ref:item.handover_Reference,Last_Modified:item?.updatedOn!==''?item?.updaredOn:item?.createdOn,Authorized_Person:item?.authorized_Person,Contractors_Rep:item?.contractor_Representative,Start_Date:item?.commence_Date}})
 
   let navigate = useNavigate();
