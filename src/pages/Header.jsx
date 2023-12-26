@@ -1,21 +1,14 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import { AppBar, Box, Toolbar, IconButton,Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import AdbIcon from '@mui/icons-material/Adb';
+import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import logo from '../images/header-logo.png';
 import { assertBooleanLiteralTypeAnnotation } from '@babel/types';
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect }  from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { logout,  CommonReducer } from '../store/reducers/common-reducers';
 
 // const pages = ['Home', 'Certification', 'Handover/Handback', 'Notes', 'Account'];
 const settings = ['Account', 'Logout'];
@@ -24,8 +17,13 @@ const pages = [];
 
 function Header() {
 
-  const navigate = useNavigate();
+  const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );
+  
+  const { token, user } = userDetails;
+  const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -46,14 +44,16 @@ function Header() {
     setAnchorElUser(null);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('username');
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('mobileNumber');
+  const handleLogout = (e) => {
+    // localStorage.removeItem('username');
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('role');
+    // localStorage.removeItem('mobileNumber');
+    // setIsLoggedin(false);
+    e.preventDefault();
+    dispatch(logout());
     navigate('/');
   }
-
   return (
     <AppBar  className='bg-appbar' >
       <Container maxWidth="xl">
@@ -125,25 +125,7 @@ function Header() {
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography> */}
+      
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -156,43 +138,15 @@ function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-             {username}
+          <Box sx={{ flexGrow: 0 }}>             
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={username} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user && user.name } src="/static/images/avatar/2.jpg" />
               </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
-              <MenuItem key="Acccount" onClick={navigate('/profile')}>
-                  <Typography textAlign="center">Account</Typography>
-                </MenuItem>
-                <MenuItem key="Logout" onClick={handleLogout}>
-                  <Typography textAlign="center">Logout</Typography>
-                </MenuItem>
-            </Menu>
-           
+            </Tooltip><span className='logout-text'>{user && user.name }</span>
+            <Typography textAlign="center"><Link className='logout-text' onClick={(e)=>handleLogout(e)}>Logout</Link></Typography>                      
           </Box>
+
         </Toolbar>
       </Container>
     </AppBar>

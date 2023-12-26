@@ -1,21 +1,17 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import { Box, Drawer, CssBaseline, List,ListItem, ListItemText, ListItemIcon, ListItemButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
-import Header from './Header'
+// import Header from './Header'
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
 const drawerWidth = 200;
 
 export default function Sidebar() {
+  const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );  
+  const { token, user } = userDetails;
   return (
     <>
     {/* <Header></Header> */}
@@ -50,7 +46,7 @@ export default function Sidebar() {
                 </ListItemButton>
               </ListItem>
               </Link>
-
+              {/* { (user && user.role==='Contractor' ) ? */}
               <Link to='/certification'>
               <ListItem key='Certification' disablePadding>
                 <ListItemButton>
@@ -62,7 +58,7 @@ export default function Sidebar() {
                 </ListItemButton>
               </ListItem>
               </Link>
-
+            {/* : ''} */}
               <Link to='/profile'>
               <ListItem key='Account' disablePadding>
                 <ListItemButton>
