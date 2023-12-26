@@ -30,15 +30,21 @@ export default function DataTable() {
   const [certificates, setCertificates] = useState([]);
   const [showList, setShowList] = useState(true);
   const [certificateDetails,setCertificateDetails]=useState([])
+  const dummyData = [ 
+    { "id": "74f5936e-0917-49e8-bef7-da0e56442f28", "type": "Testing", "mode": "Manual", "site": "River", "handover_Reference": "Certificate_Testing_Handover8", "authorized_Person": "Tom Adena", "contractor": "Andy Aleby", "contractor_Representative": null, "site_Location": "", "equipments": "Sewage Pump", "access_Arrangements": "", "work_Description": "Sewage Pump should be Cleaned.", "commence_Date": "2024-01-05", "completion_Date": "2025-06-30", "isInspectionUnderTaken": "Yes", "isStartOnSiteLetter": "Yes", "isHealthNSaftey": "Yes", "handover_Name": "", "takeover_Name": "", "handover_Date": "", "handover_Comment": "", "handback_Name": "", "takeback_Name": "", "handback_Date": "", "handback_Comment": "", "createdOn": "12-12-2023 08:03:13 AM", "createdBy": "Paul Anderson", "updatedOn": "", "updatedBy": "", "isActive": "True", "status": "New" },
+    { "id": "f77885ea-bee6-4a0c-9148-cf0af2fb6d4f", "type": "Testing", "mode": "Manual", "site": "River", "handover_Reference": "Certificate_Testing_Handover7", "authorized_Person": "Tom Adena", "contractor": "Andy Aleby", "contractor_Representative": null, "site_Location": "", "equipments": "Water Reservoir", "access_Arrangements": "", "work_Description": "Water Reservoir should be Built.", "commence_Date": "2024-01-05", "completion_Date": "2025-06-30", "isInspectionUnderTaken": "Yes", "isStartOnSiteLetter": "Yes", "isHealthNSaftey": "Yes", "handover_Name": "", "takeover_Name": "", "handover_Date": "12-12-2023", "handover_Comment": "Water Reservoir work can be started", "handback_Name": "", "takeback_Name": "", "handback_Date": "", "handback_Comment": "", "createdOn": "12-12-2023 07:59:20 AM", "createdBy": "Tom Adena", "updatedOn": "", "updatedBy": "", "isActive": "True", "status": "New" },
+    { "id": "096d8d02-0fbd-413c-9405-c764f154c709", "type": "Testing", "mode": "Manual", "site": "river", "handover_Reference": "Certificate_Testing_Handover3", "authorized_Person": "Tom Adena", "contractor": "Andy Aleby", "contractor_Representative": null, "site_Location": "", "equipments": "Water Reservoir", "access_Arrangements": "", "work_Description": "Water Reservoir should be repaired.", "commence_Date": "2024-02-15", "completion_Date": "2024-12-10", "isInspectionUnderTaken": "yes", "isStartOnSiteLetter": "Yes", "isHealthNSaftey": "Yes", "handover_Name": "", "takeover_Name": "", "handover_Date": "", "handover_Comment": "", "handback_Name": "", "takeback_Name": "", "handback_Date": "", "handback_Comment": "", "createdOn": "12-12-2023 07:51:20 AM", "createdBy": "Tom Adena", "updatedOn": "", "updatedBy": "", "isActive": "True", "status": "New" }
+    ];
   useEffect(() => {
-     fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
-        .then((response) => response.json())
-        .then((data) => {
-           setCertificates(data);
-        })
-        .catch((err) => {
-           console.log(err.message);
-        });
+    setCertificates(dummyData);
+    //  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //        setCertificates(data);
+    //     })
+    //     .catch((err) => {
+    //        console.log(err.message);
+    //     });
   }, []);
 
 
@@ -95,7 +101,7 @@ export default function DataTable() {
         {/* <Grid item xs={12} md={5} ml="auto"> */}
         <Box mb="10px" ml="auto">
 
-          <Button variant='contained' onClick={()=>{navigate('/certification')}}>
+          <Button variant='contained' onClick={()=>{navigate('/certificate-form')}}>
             Add new certificate</Button>
             </Box>
             </Box>

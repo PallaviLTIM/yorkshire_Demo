@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './pages/Login';
 import Certificate from './pages/Certificate';
+import CertificateForm from "./pages/CertificateForm";
 import NoPage from "./pages/NoPage";
 // import Sidebar from "./pages/Sidebar";
 import Home from './pages/Home';
@@ -22,6 +23,7 @@ function App() {
           <Route path="certification" element={<Certificate />} ></Route>
           <Route path="home" element={<Home />} ></Route>
           <Route path="profile" element={<Profile />} ></Route>
+          <Route path="certificate-form" element={<CertificateForm />} ></Route>
           <Route path="*" element={<NoPage />} ></Route> 
         </Routes>
       </BrowserRouter>

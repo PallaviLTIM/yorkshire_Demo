@@ -4,7 +4,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import AuthCertificateList from "./AuthCertificateList";
 import { useSelector } from "react-redux";
-
+import logo from '../images/logo.png' // relative path to image
 
 function Home(){
   const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );  
@@ -19,7 +19,8 @@ function Home(){
           <Sidebar></Sidebar>
         </Grid>
         <Grid xs={9} className='mt-10'>
-          {user && user.role === 'Contractor' ? <DataTable></DataTable> : <AuthCertificateList></AuthCertificateList> }   
+          {/* {user && user.role === 'Contractor' ? <DataTable></DataTable> : <AuthCertificateList></AuthCertificateList> }    */}
+          <img src={logo} alt={"logo"}/>
         </Grid>
       </Grid>
     </Box>  
