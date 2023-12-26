@@ -54,6 +54,9 @@ function Header() {
     dispatch(logout());
     navigate('/');
   }
+  useEffect(()=>{
+   if(user===undefined) navigate('/') 
+  },[]);
   return (
     <AppBar  className='bg-appbar' >
       <Container maxWidth="xl">

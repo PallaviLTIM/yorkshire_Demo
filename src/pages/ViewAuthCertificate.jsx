@@ -116,19 +116,52 @@ export function ViewAuthCertificate(props){
             <Typography>{props.certificateDetails[0]?.createdBy}</Typography>
          </Grid>
 
+        
+
+            
          <Grid item xs={12} md={12} className="approve-cls grid-sp"></Grid>
 
-            <Grid item xs={12} md={3} className="grid-sp">       
-            </Grid>
-            <Grid item xs={12} md={3} sx={{textAlign:"center"}} className="grid-sp">
-                <Typography className="label-cls">Handover</Typography>
-                 
-            </Grid>
-            <Grid item xs={12} md={3} className="grid-sp">
-                
-            </Grid>
+        <Grid item xs={12} md={3} className="grid-sp"> 
+        <Typography className="label-cls">Site Rule</Typography>      
+        </Grid>
+        <Grid item xs={12} md={9} className="grid-sp">
+        This is a restricted handover. This certificate only hand-over control and possession of the low voltage electrical system, and a practical working area around it. If the working area extends into a confined space the contractor will take possession of the confined space for the duration of the activity.
+        </Grid>
+        
+        <Grid item xs={12} md={3} className="grid-sp"> 
+        <Typography className="label-cls">Site/emergency procedures</Typography>      
+        </Grid>
+        <Grid item xs={12} md={9} className="grid-sp">
+            In accordance with site induction.
+        </Grid>
 
-         <Grid item xs={12} md={12} className="approve-cls grid-sp"></Grid>
+        <Grid item xs={12} md={3} className="grid-sp"> 
+        <Typography className="label-cls">Any other instructions/conditions</Typography>      
+        </Grid>
+        <Grid item xs={12} md={9} className="grid-sp">
+        when the handover is in force the contractor shall demark the working area and erect appropriate barriers and warning notices. All other personnel visiting the site shall make prior contact with the contractor using the information detailed on the contractors sign at the site entrance
+        </Grid>
+
+        <Grid item xs={12} md={3} className="grid-sp"> 
+        <Typography className="label-cls">Need for access by YW Personnel/others</Typography>      
+        </Grid>
+        <Grid item xs={12} md={9} className="grid-sp">
+        Access by YW personnel to carry out opertaional activities is permitted at all times. Access by YW maintenance personnel (or works by other contractors) when the low voltage electrical system is affected shall only be by prior agreement with the contractor that is in posession of this certificate.
+        </Grid>
+
+        <Grid item xs={12} md={12} className="approve-cls grid-sp"></Grid>
+
+        <Grid item xs={12} md={3} className="grid-sp">       
+        </Grid>
+        <Grid item xs={12} md={3} sx={{textAlign:"center"}} className="grid-sp">
+            <Typography className="label-cls">Handover</Typography>
+            
+        </Grid>
+        <Grid item xs={12} md={3} className="grid-sp">
+            
+        </Grid>
+
+            <Grid item xs={12} md={12} className="approve-cls grid-sp"></Grid>
 
             <Grid item xs={12} md={3} className="grid-sp"> 
             <Typography className="label-cls">Comments</Typography>      
