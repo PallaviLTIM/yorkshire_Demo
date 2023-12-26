@@ -35,7 +35,7 @@ function CertificateForm() {
         <Grid xs={3}>
           <Sidebar></Sidebar>
         </Grid>
-        <Grid xs={9} className='mt-10'>
+        <Grid xs={9} className='mt-10 mb-20 overflow-cls'>
           <Typography variant="h6" color="#2441E5" noWrap component="div">
           EITSA Handover / EITSA Handback Certificate
           </Typography>
