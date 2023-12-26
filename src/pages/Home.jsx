@@ -20,7 +20,7 @@ function Home(){
         </Grid>
         <Grid xs={9} className='mt-10'>
           {/* {user && user.role === 'Contractor' ? <DataTable></DataTable> : <AuthCertificateList></AuthCertificateList> }    */}
-          <img src={logo} alt={"logo"}/>
+          <img src={logo} className="img-home" alt={"logo"}/>
         </Grid>
       </Grid>
     </Box>  
