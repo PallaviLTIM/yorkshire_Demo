@@ -46,7 +46,7 @@ export default function Sidebar() {
                 </ListItemButton>
               </ListItem>
               </Link>
-              { (user && user.role==='Contractor' ) ?
+              {/* { (user && user.role==='Contractor' ) ? */}
               <Link to='/certification'>
               <ListItem key='Certification' disablePadding>
                 <ListItemButton>
@@ -58,7 +58,7 @@ export default function Sidebar() {
                 </ListItemButton>
               </ListItem>
               </Link>
-            : ''}
+            {/* : ''} */}
               <Link to='/profile'>
               <ListItem key='Account' disablePadding>
                 <ListItemButton>

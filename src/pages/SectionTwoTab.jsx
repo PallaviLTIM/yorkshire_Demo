@@ -23,25 +23,59 @@ export function SectionTwoTab() {
 
 
   useEffect(() => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/equipments')
-       .then((response) => response.json())
-       .then((data) => {
-        setEquipmentDetailsOptions(data);
-       })
-       .catch((err) => {
-          console.log(err.message);
-       });
+    let data = [  
+        {    "id": 101,    "name": "Sewage Pump",    "description": "Yorkshire Sewage Pumping Station"  }, 
+        {    "id": 102,    "name": "Water Reservoir",    "description": "Yorkshire Water Reservoir Station" },
+        {    "id": 103,    "name": "Water Motor", "description": "Yorkshire Water heavy motor" }
+    ];
+    setEquipmentDetailsOptions(data);
+    // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/equipments')
+    //    .then((response) => response.json())
+    //    .then((data) => {
+    //     setEquipmentDetailsOptions(data);
+    //    })
+    //    .catch((err) => {
+    //       console.log(err.message);
+    //    });
  }, []);
 
  useEffect(() => {
-  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
-     .then((response) => response.json())
-     .then((data) => {
-      setSiteOptions(data);
-     })
-     .catch((err) => {
-        console.log(err.message);
-     });
+  let data = [
+    {
+      "siteId": "SAJ00123450",
+      "name": "HUTTON LE HOLE/STW",
+      "address": "Hutton Lane, North Yorkshire, S16"
+    },
+    {
+      "siteId": "SAJ00230924",
+      "name": "ABBEY ROAD/NO 1 SPS",
+      "address": "Abbey Road, Yorkshire S17"
+    },
+    {
+      "siteId": "SAJ00230931",
+      "name": "ABBEY ROAD/NO 2 SPS",
+      "address": "Abbey Road, KNAR, Yorkshire"
+    },
+    {
+      "siteId": "SAJ00260519",
+      "name": "ABBEYDALE ROAD 62/2 CSO",
+      "address": "Abbeydale Road, Ilkley LS29 9QE, Yorkshire"
+    },
+    {
+      "siteId": "SAJ00390507",
+      "name": "ABBOTS RD SELBY SEWERAGE - WN - ABBOTS RD SELBY",
+      "address": "ABBOTS ROAD, Whitby, YO22 4EB"
+    }
+  ];
+  setSiteOptions(data);
+  // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
+  //    .then((response) => response.json())
+  //    .then((data) => {
+  //     setSiteOptions(data);
+  //    })
+  //    .catch((err) => {
+  //       console.log(err.message);
+  //    });
 }, []);
 
 
@@ -63,7 +97,8 @@ export function SectionTwoTab() {
 
 
   const addSitePlan = (e) => {
-    setBrowsedSitePlanData(e.target.value);
+    // console.log(e.target.files);
+    setBrowsedSitePlanData(URL.createObjectURL(e.target.files[0]));
   };
   const { handleSubmit } = useForm();
   const onSubmit =async e => {
@@ -138,8 +173,8 @@ export function SectionTwoTab() {
          <Button>Site plan attachement<FileUploadIcon color="primary" />         
             <input
             type="file"
-            id="file"     
-            name="file"
+            id="site_plan_file"     
+            name="site_plan_file"
             onClick={(e) => (e.target.value = null)}
             onChange={(e) => addSitePlan(e)}
             style={{ 
@@ -150,8 +185,9 @@ export function SectionTwoTab() {
                 right: "0",
                 bottom: "0",
                 left: "0"
-              }}  />
+              }}  />              
               </Button>
+              {/* <img src={hnsfile} /> */}
               </Box>
           </Box>
             </Grid>
@@ -366,7 +402,7 @@ export function SectionTwoTab() {
                bottom: "0",
                left: "0"
               }}  
-              onChange={e=>setHNSFile(e.target.value)}
+              onChange={e=>setHNSFile(URL.createObjectURL(e.target.files[0]))}
               />
               </Button>
               </Box>

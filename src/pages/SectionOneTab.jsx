@@ -24,49 +24,130 @@ export function SectionOneTab() {
 
     
   useEffect(() => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
-       .then((response) => response.json())
-       .then((data) => {
-        setSiteOptions(data);
-       })
-       .catch((err) => {
-          console.log(err.message);
-       });
+    let data = [
+      {
+        "siteId": "SAJ00123450",
+        "name": "HUTTON LE HOLE/STW",
+        "address": "Hutton Lane, North Yorkshire, S16"
+      },
+      {
+        "siteId": "SAJ00230924",
+        "name": "ABBEY ROAD/NO 1 SPS",
+        "address": "Abbey Road, Yorkshire S17"
+      },
+      {
+        "siteId": "SAJ00230931",
+        "name": "ABBEY ROAD/NO 2 SPS",
+        "address": "Abbey Road, KNAR, Yorkshire"
+      },
+      {
+        "siteId": "SAJ00260519",
+        "name": "ABBEYDALE ROAD 62/2 CSO",
+        "address": "Abbeydale Road, Ilkley LS29 9QE, Yorkshire"
+      },
+      {
+        "siteId": "SAJ00390507",
+        "name": "ABBOTS RD SELBY SEWERAGE - WN - ABBOTS RD SELBY",
+        "address": "ABBOTS ROAD, Whitby, YO22 4EB"
+      }
+    ];
+    setSiteOptions(data);
+    // console.log(siteOptions);
+    // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
+    //    .then((response) => response.json())
+    //    .then((data) => {
+    //     setSiteOptions(data);
+    //    })
+    //    .catch((err) => {
+    //       console.log(err.message);
+    //    });
  }, []);
 
   
   useEffect(() => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="Authorized Person"')
-       .then((response) => response.json())
-       .then((data) => {
-        setAuthorizedPersonDetails(data);
-       })
-       .catch((err) => {
-          console.log(err.message);
-       });
+    let data = [
+      {
+        "id": "1001",
+        "name": "Steven Carbtree",
+        "role": "Authorized Person",
+        "company": "Yorkshire Water",
+        "mobileNumber": "9871233455"
+      },
+      {
+        "id": "1002",
+        "name": "Paul Anderson",
+        "role": "Authorized Person",
+        "company": "Yorkshire Water",
+        "mobileNumber": "7654320987"
+      },
+      {
+        "id": "1003",
+        "name": "Tom Adena",
+        "role": "Authorized Person",
+        "company": "Yorkshire Water",
+        "mobileNumber": "7654320900"
+      },
+      {
+        "id": "1004",
+        "name": "Jason Alred",
+        "role": "Authorized Person",
+        "company": "Yorkshire Water",
+        "mobileNumber": "2234320900"
+      }
+    ];
+    setAuthorizedPersonDetails(data);
+    // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="Authorized Person"')
+    //    .then((response) => response.json())
+    //    .then((data) => {
+    //     setAuthorizedPersonDetails(data);
+    //    })
+    //    .catch((err) => {
+    //       console.log(err.message);
+    //    });
  }, []);
 
  useEffect(() => {
-  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
-     .then((response) => response.json())
-     .then((data) => {
-      setContractorDetails(data);
-     })
-     .catch((err) => {
-        console.log(err.message);
-     });
+  let data = [
+    {
+      "id": "1005",
+      "name": "Andy Aleby",
+      "role": "Contractor",
+      "company": "Jacobs Field Service Ltd",
+      "mobileNumber": "2555678219"
+    }
+  ];
+  setContractorDetails(data);
+  // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
+  //    .then((response) => response.json())
+  //    .then((data) => {
+  //     setContractorDetails(data);
+  //    })
+  //    .catch((err) => {
+  //       console.log(err.message);
+  //    });
 }, []);
 
 
 useEffect(() => {
-  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
-     .then((response) => response.json())
-     .then((data) => {
-      setContractorRepDetails(data);
-     })
-     .catch((err) => {
-        console.log(err.message);
-     });
+  let data = [
+    {
+      "id": "1005",
+      "name": "Andy Aleby",
+      "role": "Contractor",
+      "company": "Jacobs Field Service Ltd",
+      "mobileNumber": "2555678219"
+    }
+  ];
+  setContractorDetails(data);
+  setContractorRepDetails(data);
+  // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
+  //    .then((response) => response.json())
+  //    .then((data) => {
+  //     setContractorRepDetails(data);
+  //    })
+  //    .catch((err) => {
+  //       console.log(err.message);
+  //    });
 }, []);
 
 
@@ -280,13 +361,6 @@ useEffect(() => {
                   onChange={(e)=>setRepresentativeTele(e.target.value)}
                 />
             </Grid>
-
-           
-            
-            
-           
-            
-            
             </Grid>
             </form>
     </Box>
