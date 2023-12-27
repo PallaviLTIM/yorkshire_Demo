@@ -4,7 +4,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Box, Button, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
-import { ViewCertificate } from './View-Certificate';
+// import { ViewCertificate } from './View-Certificate';
+import Certificate from './Certificate';
+import TabComponent from './TabComponent';
 
 
 const columns = [
@@ -30,8 +32,9 @@ export default function DataTable() {
   const [certificates, setCertificates] = useState([]);
   const [showList, setShowList] = useState(true);
   const [certificateDetails,setCertificateDetails]=useState([])
+  
   useEffect(() => {
-     fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
+     fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates')
         .then((response) => response.json())
         .then((data) => {
            setCertificates(data);
@@ -43,7 +46,7 @@ export default function DataTable() {
 
 
   const handleRowClick = () => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates')
+    fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates')
     .then((response) => response.json())
     .then((data) => {
       setCertificateDetails(data);
@@ -120,6 +123,6 @@ export default function DataTable() {
           pageSizeOptions={[5, 10]}
           onRowClick={handleRowClick}
           checkboxSelection />
-      </Box></Box>:<ViewCertificate certificateDetails={certificateDetails}/>}</>
+      </Box></Box>:<TabComponent showDetails={!showList}/>}</>
   );
 }

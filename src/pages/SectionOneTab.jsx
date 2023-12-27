@@ -4,27 +4,26 @@ import {useEffect, useState} from "react";
 import { useForm } from 'react-hook-form';
 
 
-export function SectionOneTab() {
+export function SectionOneTab(props) {
   const [type, setType] = useState('');
   const [site, setSite] = useState('');
   const [status, setStatus] = useState('');
-  const [handover_reference, setHandover] = useState('');
-  const [person_name, setPersonname] = useState('');
-  const [auth_person_telephone_number, setAuthTele] = useState('');
+  const [handover_reference, setHandover] = useState('Certificate_Testing_Handover8');
+  const [person_name, setPersonname] = useState();
+  const [auth_person_telephone_number, setAuthTele] = useState('7865467890');
   const [contractor_name, setContractorName] = useState('');
-  const [contractor_telephone_number, setContractorTele] = useState('');
+  const [contractor_telephone_number, setContractorTele] = useState('8645678945');
   const [representative_name, setRepresentative] = useState('');
-  const [representative_telephone_number, setRepresentativeTele] = useState('');
+  const [representative_telephone_number, setRepresentativeTele] = useState('9856784567');
   const [authorizedPersonDetails,setAuthorizedPersonDetails]=useState()
   const [contactorDetails,setContractorDetails]=useState()
   const [contactorRepDetails,setContractorRepDetails]=useState()
   const [siteOptions,setSiteOptions]=useState()
+  const [certificates, setCertificates] = useState([]);
+ 
 
-
-
-    
   useEffect(() => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
+    fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/sites')
        .then((response) => response.json())
        .then((data) => {
         setSiteOptions(data);
@@ -36,7 +35,7 @@ export function SectionOneTab() {
 
   
   useEffect(() => {
-    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="Authorized Person"')
+    fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/authorized_person')
        .then((response) => response.json())
        .then((data) => {
         setAuthorizedPersonDetails(data);
@@ -47,7 +46,7 @@ export function SectionOneTab() {
  }, []);
 
  useEffect(() => {
-  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
+  fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/contractor')
      .then((response) => response.json())
      .then((data) => {
       setContractorDetails(data);
@@ -59,7 +58,7 @@ export function SectionOneTab() {
 
 
 useEffect(() => {
-  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/contactByRole?role="contractor"')
+  fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/contractor')
      .then((response) => response.json())
      .then((data) => {
       setContractorRepDetails(data);
@@ -70,8 +69,21 @@ useEffect(() => {
 }, []);
 
 
+useEffect(() => {
+  fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates')
+     .then((response) => response.json())
+     .then((data) => {
+        setCertificates(data);
+     })
+     .catch((err) => {
+        console.log(err.message);
+     });
+}, []);
+
   
   const { handleSubmit } = useForm();
+  
+
   const onSubmit =async e => {
     
     let formData = {
@@ -122,6 +134,7 @@ useEffect(() => {
     //   });
 
     localStorage.setItem('certificate_id',"74f5936e-0917-49e8-bef7-da0e56442f28");
+    console.log('siteoption',siteOptions)
 
   };
   return (
@@ -133,7 +146,7 @@ useEffect(() => {
                 <Typography mt="5px" component="div">Type</Typography>
                 <RadioGroup
                   row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  aria-labelledby="demo-row-radio-buttons-group-label"               
                 >
                   <FormControlLabel
                     value="test"
@@ -144,6 +157,7 @@ useEffect(() => {
                       />       
                     }
                     label="Test"
+                    disabled={props?.showDetails}
                     onChange={(e)=>setType(e.target.value)}
                   />
                   <FormControlLabel
@@ -155,6 +169,7 @@ useEffect(() => {
                       />
                     }
                     label="Remedial"
+                    disabled={props?.showDetails}
                     onChange={(e)=>setType(e.target.value)}
                   />
                 </RadioGroup>
@@ -180,11 +195,12 @@ useEffect(() => {
             <Grid item xs={12} md={6}>
               <Typography>Site*</Typography>
                <Autocomplete
-               disablePortal
+               disabled={props.showDetails}
+               inputValue={"River"}
                id="equipments"
               options={siteOptions?.map((item) => item?.name)}
               sx={{ width: 300 }}
-              renderInput={(params) => <TextField {...params} 
+              renderInput={(params) => <TextField {...params}        
               onChange={(e)=>setSite(e.target.value)}/>}
               />
             </Grid>
@@ -193,10 +209,12 @@ useEffect(() => {
                 <TextField
                   id="handover_reference"
                   name={'Handover Reference'}
+                  disabled={props.showDetails}
                   inputProps={{
                     maxLength: 255,
                   }}
                   fullWidth
+                  value={handover_reference}
                   placeholder="Enter handover reference"
                   onChange={(e)=>setHandover(e.target.value)}
                 />
@@ -208,8 +226,9 @@ useEffect(() => {
             <Grid item xs={12} md={6}>
               <Typography>Authorized person name*</Typography>
               <Autocomplete
-               disablePortal
                id="authorizedPersonDetails"
+               disabled={props.showDetails}
+               inputValue={"Tom Adena"}
               options={authorizedPersonDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} 
@@ -221,6 +240,8 @@ useEffect(() => {
                 <TextField
                   id="auth_person_telephone_number"
                   name={'Telephone number'}
+                  disabled={props.showDetails}
+                  value={auth_person_telephone_number}
                   inputProps={{
                     maxLength: 255,
                   }}
@@ -229,12 +250,12 @@ useEffect(() => {
                   onChange={(e)=>setAuthTele(e.target.value)}
                 />
             </Grid>
-
             <Grid item xs={12} md={6}>
               <Typography>Contractor name*</Typography>
               <Autocomplete
-               disablePortal
                id="Contrator_Details"
+               disabled={props.showDetails}
+               inputValue={"Andy Aleby"}
               options={contactorDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} 
@@ -251,6 +272,8 @@ useEffect(() => {
                     maxLength: 255,
                   }}
                   fullWidth
+                  disabled={props.showDetails}
+                  value={contractor_telephone_number}
                   placeholder="Enter telephone number"
                   onChange={(e)=>setContractorTele(e.target.value)}
                 />
@@ -259,7 +282,8 @@ useEffect(() => {
             <Grid item xs={12} md={6}>
               <Typography>Contactor representative name*</Typography>
               <Autocomplete
-               disablePortal
+               disabled={props.showDetails}
+               inputValue={props?.showDetails&&certificates[0]?.contractor_Representative}
                id="ContratorRep_Details"
               options={contactorRepDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
@@ -276,17 +300,12 @@ useEffect(() => {
                     maxLength: 255,
                   }}
                   fullWidth
+                  disabled={props.showDetails}
+                  value={representative_telephone_number}
                   placeholder="Enter telephone number"
                   onChange={(e)=>setRepresentativeTele(e.target.value)}
                 />
-            </Grid>
-
-           
-            
-            
-           
-            
-            
+            </Grid>          
             </Grid>
             </form>
     </Box>
