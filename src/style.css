@@ -1,16 +1,43 @@
+body{
+    overflow-y: hidden !important;
+}
 .login-body{
     width: 1440px;
     height: 1024px;
     top: 1688px;
-    /* left: -349px; */
     background-image: url('./images/login_page_background.png');
     background-size: auto;
+}
+
+.css-1nv1o5k-MuiGrid-root{
+    
+}
+
+.overflow-cls{
+    overflow-y: scroll;
+    height: 400px;
+    /* margin-bottom: 20px; */
+}
+
+.css-wvz34p{
+    width: 1000px !important;
+    margin-left: -10px !important;
+    margin-top: 15px;
+}
+
+.img-home{
+    width: 600px;
+    margin-top: 100px;
+    margin-left: 150px;
 }
 
 .heading{
     font-size: x-large;
     font-weight: 600;
     color: #0d6efD !important;
+}
+#uncontrolled-tab-example{
+    overflow: scroll !important;
 }
 
 .box-container{
@@ -21,6 +48,15 @@
     margin-bottom: 20px;
 }
 
+.grid-sp{
+    margin-bottom: 10px !important;
+}
+
+.grid-border{
+    margin-bottom: 10px !important;
+    border-bottom: 1px solid black;
+}
+
 .bg-appbar{
     background: #124A87 !important;
     color: #2FB5DE !important;
@@ -29,13 +65,42 @@
 .MuiDrawer-paper {
     width: 184px;
 }
+
+.mb-20{
+    margin-bottom: 20px;
+}
 .bg-sidebar{
     background: #124A87 !important;
     color: #2FB5DE !important;
     font-weight: 500 !important;
-    height: 900px !important;
+    height: 1000px !important;
+    /* height: auto; */
     margin-top: 0px;
+    width: 184px;
     text-decoration: none;
+}
+
+.label-cls{
+    color: #302f2f;
+    font-weight: 600 !important;
+}
+
+.approve-cls{
+    border: 1px solid black;
+    margin-right: 10px !important;
+}
+
+.certificate-design{
+    border: 1px solid #302f2f;
+    padding-left: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 0px;
+}
+
+.logout-text{
+    text-decoration: none;
+    color: white;
 }
 
 .login-container{

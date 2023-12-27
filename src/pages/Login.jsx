@@ -4,22 +4,26 @@ import { Formik, useFormik } from 'formik';
 import { LoginSchema } from "../utils/Schema";
 import logo from '../images/logo.png' // relative path to image
 import { Link, useNavigate, navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from '../store/reducers/common-reducers';
 
 function Login() {
+   const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-  let navigate = useNavigate();
-  //let dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
+    // const [isLoggedin, setIsLoggedin] = useState(false);
+    let navigate = useNavigate();
+    //let dispatch = useDispatch();
+    const formik = useFormik({
+      initialValues: {
+        email: "",
+        password: "",
     },
     validationSchema: LoginSchema,
     onSubmit: async (values, { resetForm }) => {
      
       const formData = JSON.stringify(values);
       const { email, password } = values;
-
+      // console.log('formData',formData);
      /* const response = await fetch("http://localhost:5000/api/login-user", {
         method: "POST",
         crossDomain: true,
@@ -34,12 +38,14 @@ function Login() {
       const data = await response.json();*/
 
       let data = {
-        'username': 'admin@gmail.com',
-        'password': 'admin123',
+        'username': 'auth@gmail.com',
+        'password': 'Password123',
         'status': 'ok'
       }
+      
       let response = {};
       if (data) {
+        console.log('test',data.username);
         if (data.status === "ok" && data.username === email && data.password === password) {
           localStorage.setItem("user", JSON.stringify(data));
           // console.log("data", data.email);
@@ -58,11 +64,51 @@ function Login() {
                     "mobileNumber": "7654320900"  
               }
           };
-          localStorage.setItem('username', response.user.name);
-          localStorage.setItem('role', response.user.role);
-          localStorage.setItem('mobileNumber', response.user.mobileNumber);
-          localStorage.setItem('token', response.token);
-          navigate("/profile");
+          // console.log('test');
+          // localStorage.setItem('username', response.user.name);
+          // localStorage.setItem('role', response.user.role);
+          // localStorage.setItem('mobileNumber', response.user.mobileNumber);
+          // localStorage.setItem('token', response.token);
+          // navigate("/profile");
+        }
+        data = {
+          'username': 'contractor@gmail.com',
+          'password': 'Password123',
+          'status': 'ok'
+        }
+        if (data.status === "ok" && data.username === email && data.password === password) {
+          localStorage.setItem("user", JSON.stringify(data));
+          // console.log("data", data.email);
+          // const payload = {
+          //   email: email,
+          // };
+          // dispatch({ type: "ADD_USER", payload: payload });
+        
+          response = {
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRvbSBBZGVuYSIsIm5iZiI6MTcwMjM3MzA0NCwiZXhwIjoxNzAyNDU5NDQ0LCJpYXQiOjE3MDIzNzMwNDR9.wgwVZm5UoqGJWrh-OGHD_YgPw1u4uFaoln7HhByvP48",  
+              "message": "Login successful",  
+              "user": { 
+                    "id": "1005", 
+                    "name": "Andy Aleby", 
+                    "role": "Contractor", 
+                    "company": "Jacobs Field Service Ltd", 
+                    "mobileNumber": "2555678219" 
+              }
+          }
+          // localStorage.setItem('username', response.user.name);
+          // localStorage.setItem('role', response.user.role);
+          // localStorage.setItem('mobileNumber', response.user.mobileNumber);
+          // localStorage.setItem('token', response.token);
+          // navigate("/profile");
+        }
+        if(response){
+          dispatch(
+            login({
+              "token": response.token,
+              "user": response.user
+            })
+          );
+          navigate("/home");
         }
       }
       // console.log("res1", data.data);

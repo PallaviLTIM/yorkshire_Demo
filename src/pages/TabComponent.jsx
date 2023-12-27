@@ -56,7 +56,7 @@ function TabComponent(props) {
     <Tabs
       defaultActiveKey="test-tab"
       id="uncontrolled-tab-example"
-      className="mb-3"
+      className="mb-3" 
     >
       <Tab eventKey="test-tab" title="Section 1">
       <SectionOneTab showDetails={showDetails}></SectionOneTab>
