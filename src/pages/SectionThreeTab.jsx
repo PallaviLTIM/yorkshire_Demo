@@ -21,7 +21,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export function SectionThreeTab() {
+export function SectionThreeTab(props) {
   return (
     <Box p="15px">   
           <Typography fontWeight="700" fontSize="18px">Relevant Isolation:</Typography>
@@ -29,7 +29,7 @@ export function SectionThreeTab() {
               The contractor shall carry out all necessary electrical isolation in accordance with the autherity given under MP24(electrical safety) as authorised persons. Isolations shall only be carried out by prior agreement with the local YW service delivery team.
       
           </Typography>
-          <Button variant="outlined" margin={5}>Add Isolation</Button>
+          <Button variant="outlined" margin={5}  disabled={props.showDetails}>Add Isolation</Button>
 
           <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table" margin={5}>
