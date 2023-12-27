@@ -8,7 +8,7 @@ import SectionOneTab from './SectionOneTab';
 import SectionTwoTab from './SectionTwoTab';
 import SectionThreeTab from './SectionThreeTab';
 import SectionFourTab from './SectionFourTab';
-import Handover from './Handover';
+import Handover from './handover';
 import Notes from './notes';
 import { useState } from 'react';
 import MuiAlert from '@mui/material/Alert';
