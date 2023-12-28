@@ -1,5 +1,5 @@
 body{
-    /* overflow-y: hidden !important; */
+    overflow-y: hidden !important;
 }
 .login-body{
     width: 1440px;
@@ -7,7 +7,28 @@ body{
     top: 1688px;
     background-image: url('./images/login_page_background.png');
     background-size: auto;
-   
+}
+
+.css-1nv1o5k-MuiGrid-root{
+    
+}
+
+.overflow-cls{
+    overflow-y: scroll;
+    height: 400px;
+    /* margin-bottom: 20px; */
+}
+
+.css-wvz34p{
+    width: 1000px !important;
+    margin-left: -10px !important;
+    margin-top: 15px;
+}
+
+.img-home{
+    width: 600px;
+    margin-top: 100px;
+    margin-left: 150px;
 }
 
 .heading{
@@ -44,11 +65,16 @@ body{
 .MuiDrawer-paper {
     width: 184px;
 }
+
+.mb-20{
+    margin-bottom: 20px;
+}
 .bg-sidebar{
     background: #124A87 !important;
     color: #2FB5DE !important;
     font-weight: 500 !important;
-    height: 900px !important;
+    height: 1000px !important;
+    /* height: auto; */
     margin-top: 0px;
     width: 184px;
     text-decoration: none;

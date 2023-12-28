@@ -4,13 +4,13 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import {useEffect, useState} from "react";
 import { useForm } from 'react-hook-form';
 
-export function SectionTwoTab() {
+export function SectionTwoTab(props) {
   const [location_details, setLocationDetails] = useState('');
   const [equipment_details, setEquipmentDetails] = useState('');
-  const [work_details, setWorkDetails] = useState('');
+  const [work_details, setWorkDetails] = useState(props.showDetails&&'Sewage Pump should be Cleaned.');
   const [site_access_arrangements, setSiteAccessArrangments] = useState('');
-  const [commence_date, setCommenceDate] = useState('');
-  const [completion_date, setCompletionDate] = useState('');
+  const [commence_date, setCommenceDate] = useState(props.showDetails&&'2024-01-05');
+  const [completion_date, setCompletionDate] = useState(props.showDetails&&'2025-06-30');
   const [isInspectionUnderTaken, setIsInspectionUnderTaken] = useState('');
   const [isStartOnSiteLetter, setIsStartOnSiteLetter] = useState('');
   const [isHealthNSaftey, setIsHealthNSaftey] = useState('');
@@ -20,7 +20,18 @@ export function SectionTwoTab() {
   const [projectDuration,setProjectDuration]=useState(0)
   const [equipmentDetailsOptions,setEquipmentDetailsOptions]=useState()
   const [siteOptions,setSiteOptions]=useState()
+  const [certificates, setCertificates] = useState([]);
 
+  useEffect(() => {
+    fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates')
+       .then((response) => response.json())
+       .then((data) => {
+          setCertificates(data);
+       })
+       .catch((err) => {
+          console.log(err.message);
+       });
+  }, []);
 
   useEffect(() => {
     let data = [  
@@ -158,10 +169,13 @@ export function SectionTwoTab() {
              <Autocomplete
                disablePortal
                id="equipments"
+               inputValue={props.showDetails?'River':""}
+               disabled={props?.showDetails||props?.detailsSaved}            
               options={siteOptions?.map((item) => item?.name)}
               sx={{ width: 300 }}
-              renderInput={(params) => <TextField {...params} 
-              onChange={(e)=>setLocationDetails(e.target.value)}/>}
+              renderInput={(params) => <TextField  {...params} 
+              onChange={(e)=>setLocationDetails(e.target.value)}
+              />}
               />
           </Box>
           <Grid container rowSpacing={2} columnSpacing={3} mt='2px'>
@@ -173,8 +187,9 @@ export function SectionTwoTab() {
          <Button>Site plan attachement<FileUploadIcon color="primary" />         
             <input
             type="file"
-            id="site_plan_file"     
-            name="site_plan_file"
+            id="file"     
+            name="file"
+            disabled={props?.showDetails||props?.detailsSaved}   
             onClick={(e) => (e.target.value = null)}
             onChange={(e) => addSitePlan(e)}
             style={{ 
@@ -194,8 +209,9 @@ export function SectionTwoTab() {
             <Grid item xs={12} md={6}>
             <Typography>Equipment to be worked on</Typography>
               <Autocomplete
-               disablePortal
                id="equipments"
+               disabled={props?.showDetails||props?.detailsSaved}  
+               inputValue={props.showDetails?'Sewage Pump':""} 
               options={equipmentDetailsOptions?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} 
@@ -207,6 +223,8 @@ export function SectionTwoTab() {
             <TextField
             id="site_details"
             name={'Site details'}
+            disabled={props?.showDetails||props?.detailsSaved}   
+            value={certificates[0]?.access_Arrangements}
             size="small"
             fullWidth
             placeholder="Enter details"
@@ -219,6 +237,8 @@ export function SectionTwoTab() {
             id="commences_date_details"
             type="date"
             name={'Date commences'}
+            disabled={props?.showDetails||props?.detailsSaved}  
+            value={commence_date}            
             size="small"
             fullWidth
             format="MM/DD/YYYY"
@@ -230,6 +250,8 @@ export function SectionTwoTab() {
            <TextField
             id="completion_date_details"
             type="date"
+            disabled={props?.showDetails||props?.detailsSaved}
+            value={commence_date}            
             name={'Date commences'}
             size="small"
             fullWidth
@@ -247,7 +269,9 @@ export function SectionTwoTab() {
             fullWidth
             placeholder="0"
             size="small"
-            value={projectDuration}
+            value={0||projectDuration}
+            disabled
+          
           />
             </Grid>
             <Grid item xs={12} md={8}>
@@ -258,7 +282,10 @@ export function SectionTwoTab() {
             name={'Date commences'}
             placeholder="Enter here"
             fullWidth  
-            size="small"   
+            disabled={props?.showDetails||props?.detailsSaved}
+            size="small"  
+            value={work_details} 
+            
             onChange={(e)=>setWorkDetails(e.target.value)}  
           />
             </Grid>
@@ -269,7 +296,7 @@ export function SectionTwoTab() {
               aria-labelledby="demo-row-radio-buttons-group-label"
             >
               <FormControlLabel
-                value="yes"
+                value={props?.showDetails&&certificates[0]?.isInspectionUnderTaken||"yes"}
                 control={
                   <Radio
                     name="IsInspectionUnderTaken"
@@ -277,6 +304,7 @@ export function SectionTwoTab() {
                   />       
                 }
                 label="Yes"
+                disabled={props.showDetails}
                 onChange={e=>setIsInspectionUnderTaken(e.target.value)}
               />
               <FormControlLabel
@@ -288,6 +316,7 @@ export function SectionTwoTab() {
                   />
                 }
                 label="No"
+                disabled={props.showDetails}
                 onChange={e=>setIsInspectionUnderTaken(e.target.value)}
               />
             </RadioGroup>
@@ -306,6 +335,7 @@ export function SectionTwoTab() {
                     id="isFallUnderCDM"
                   />       
                 }
+                disabled={props.showDetails}
                 onChange={(e)=>setIsFallUnderCDM(e.target.value)}
                 label="Yes"
               />
@@ -318,6 +348,7 @@ export function SectionTwoTab() {
                   />
                 }
                 label="No"
+                disabled={props.showDetails}
                 onChange={(e)=>setIsFallUnderCDM(e.target.value)}
               />
             </RadioGroup>
@@ -337,6 +368,7 @@ export function SectionTwoTab() {
                   />       
                 }
                 label="Yes"
+                disabled={props.showDetails}
                 onChange={e=>setIsStartOnSiteLetter(e.target.value)}
               />
               <FormControlLabel
@@ -348,6 +380,7 @@ export function SectionTwoTab() {
                   />
                 }
                 label="No"
+                disabled={props.showDetails}
                 onChange={e=>setIsStartOnSiteLetter(e.target.value)}
               />
             </RadioGroup>
@@ -368,6 +401,7 @@ export function SectionTwoTab() {
                   />       
                 }
                 label="Yes"
+                disabled={props.showDetails}
                 onChange={e=>setIsHealthNSaftey(e.target.value)}
               />
               <FormControlLabel
@@ -379,6 +413,7 @@ export function SectionTwoTab() {
                   />
                 }
                 label="No"
+                disabled={props.showDetails}
                 onChange={e=>setIsHealthNSaftey(e.target.value)}
               />
             </RadioGroup> 
@@ -393,6 +428,7 @@ export function SectionTwoTab() {
             type="file"
             id="hnsfile"     
             name="hnsfile"
+            disabled={props.showDetails||props?.detailsSaved}
             style={{ 
                 cursor: "pointer",
                position: "absolute",
