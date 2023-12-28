@@ -8,13 +8,13 @@ export function SectionOneTab(props) {
   const [type, setType] = useState('');
   const [site, setSite] = useState('');
   const [status, setStatus] = useState('');
-  const [handover_reference, setHandover] = useState('Certificate_Testing_Handover8');
+  const [handover_reference, setHandover] = useState(props.showDetails&&'Certificate_Testing_Handover8');
   const [person_name, setPersonname] = useState();
-  const [auth_person_telephone_number, setAuthTele] = useState('7865467890');
+  const [auth_person_telephone_number, setAuthTele] = useState(props.showDetails&&'7865467890');
   const [contractor_name, setContractorName] = useState('');
-  const [contractor_telephone_number, setContractorTele] = useState('8645678945');
+  const [contractor_telephone_number, setContractorTele] = useState(props.showDetails&&'8645678945');
   const [representative_name, setRepresentative] = useState('');
-  const [representative_telephone_number, setRepresentativeTele] = useState('9856784567');
+  const [representative_telephone_number, setRepresentativeTele] = useState(props.showDetails&&'9856784567');
   const [authorizedPersonDetails,setAuthorizedPersonDetails]=useState()
   const [contactorDetails,setContractorDetails]=useState()
   const [contactorRepDetails,setContractorRepDetails]=useState()
@@ -195,8 +195,8 @@ useEffect(() => {
             <Grid item xs={12} md={6}>
               <Typography>Site*</Typography>
                <Autocomplete
-               disabled={props.showDetails}
-               inputValue={"River"}
+               disabled={props.showDetails||props?.detailsSaved}
+               inputValue={props.showDetails||!props.detailsSaved?"River":""}
                id="equipments"
               options={siteOptions?.map((item) => item?.name)}
               sx={{ width: 300 }}
@@ -209,7 +209,7 @@ useEffect(() => {
                 <TextField
                   id="handover_reference"
                   name={'Handover Reference'}
-                  disabled={props.showDetails}
+                  disabled
                   inputProps={{
                     maxLength: 255,
                   }}
@@ -227,8 +227,8 @@ useEffect(() => {
               <Typography>Authorized person name*</Typography>
               <Autocomplete
                id="authorizedPersonDetails"
-               disabled={props.showDetails}
-               inputValue={"Tom Adena"}
+               disabled={props.showDetails||props?.detailsSaved}
+               inputValue={props?.showDetails||!props.detailsSaved?"Tom Adena":""}
               options={authorizedPersonDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} 
@@ -240,7 +240,7 @@ useEffect(() => {
                 <TextField
                   id="auth_person_telephone_number"
                   name={'Telephone number'}
-                  disabled={props.showDetails}
+                  disabled={props.showDetails||props?.detailsSaved}
                   value={auth_person_telephone_number}
                   inputProps={{
                     maxLength: 255,
@@ -254,8 +254,8 @@ useEffect(() => {
               <Typography>Contractor name*</Typography>
               <Autocomplete
                id="Contrator_Details"
-               disabled={props.showDetails}
-               inputValue={"Andy Aleby"}
+               disabled={props.showDetails||props?.detailsSaved}
+               inputValue={props.showDetails?"Andy Aleby":""}
               options={contactorDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} 
@@ -272,7 +272,7 @@ useEffect(() => {
                     maxLength: 255,
                   }}
                   fullWidth
-                  disabled={props.showDetails}
+                  disabled={props.showDetails||props?.detailsSaved}
                   value={contractor_telephone_number}
                   placeholder="Enter telephone number"
                   onChange={(e)=>setContractorTele(e.target.value)}
@@ -282,7 +282,7 @@ useEffect(() => {
             <Grid item xs={12} md={6}>
               <Typography>Contactor representative name*</Typography>
               <Autocomplete
-               disabled={props.showDetails}
+               disabled={props.showDetails||props?.detailsSaved}
                inputValue={props?.showDetails&&certificates[0]?.contractor_Representative}
                id="ContratorRep_Details"
               options={contactorRepDetails?.map((item) => item?.name)}
@@ -300,7 +300,7 @@ useEffect(() => {
                     maxLength: 255,
                   }}
                   fullWidth
-                  disabled={props.showDetails}
+                  disabled={props.showDetails||props?.detailsSaved}
                   value={representative_telephone_number}
                   placeholder="Enter telephone number"
                   onChange={(e)=>setRepresentativeTele(e.target.value)}

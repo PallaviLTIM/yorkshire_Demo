@@ -7,10 +7,10 @@ import { useForm } from 'react-hook-form';
 export function SectionTwoTab(props) {
   const [location_details, setLocationDetails] = useState('');
   const [equipment_details, setEquipmentDetails] = useState('');
-  const [work_details, setWorkDetails] = useState('Sewage Pump should be Cleaned.');
+  const [work_details, setWorkDetails] = useState(props.showDetails&&'Sewage Pump should be Cleaned.');
   const [site_access_arrangements, setSiteAccessArrangments] = useState('');
-  const [commence_date, setCommenceDate] = useState('2024-01-05');
-  const [completion_date, setCompletionDate] = useState('2025-06-30');
+  const [commence_date, setCommenceDate] = useState(props.showDetails&&'2024-01-05');
+  const [completion_date, setCompletionDate] = useState(props.showDetails&&'2025-06-30');
   const [isInspectionUnderTaken, setIsInspectionUnderTaken] = useState('');
   const [isStartOnSiteLetter, setIsStartOnSiteLetter] = useState('');
   const [isHealthNSaftey, setIsHealthNSaftey] = useState('');
@@ -169,8 +169,8 @@ export function SectionTwoTab(props) {
              <Autocomplete
                disablePortal
                id="equipments"
-               inputValue='River'
-               disabled={props?.showDetails}            
+               inputValue={props.showDetails?'River':""}
+               disabled={props?.showDetails||props?.detailsSaved}            
               options={siteOptions?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField  {...params} 
@@ -189,7 +189,7 @@ export function SectionTwoTab(props) {
             type="file"
             id="file"     
             name="file"
-            disabled={props?.showDetails}   
+            disabled={props?.showDetails||props?.detailsSaved}   
             onClick={(e) => (e.target.value = null)}
             onChange={(e) => addSitePlan(e)}
             style={{ 
@@ -210,8 +210,8 @@ export function SectionTwoTab(props) {
             <Typography>Equipment to be worked on</Typography>
               <Autocomplete
                id="equipments"
-               disabled={props?.showDetails}  
-               inputValue='Sewage Pump' 
+               disabled={props?.showDetails||props?.detailsSaved}  
+               inputValue={props.showDetails?'Sewage Pump':""} 
               options={equipmentDetailsOptions?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} 
@@ -223,7 +223,7 @@ export function SectionTwoTab(props) {
             <TextField
             id="site_details"
             name={'Site details'}
-            disabled={props?.showDetails}   
+            disabled={props?.showDetails||props?.detailsSaved}   
             value={certificates[0]?.access_Arrangements}
             size="small"
             fullWidth
@@ -237,7 +237,7 @@ export function SectionTwoTab(props) {
             id="commences_date_details"
             type="date"
             name={'Date commences'}
-            disabled={props?.showDetails}  
+            disabled={props?.showDetails||props?.detailsSaved}  
             value={commence_date}            
             size="small"
             fullWidth
@@ -250,7 +250,7 @@ export function SectionTwoTab(props) {
            <TextField
             id="completion_date_details"
             type="date"
-            disabled={props?.showDetails}
+            disabled={props?.showDetails||props?.detailsSaved}
             value={commence_date}            
             name={'Date commences'}
             size="small"
@@ -282,7 +282,7 @@ export function SectionTwoTab(props) {
             name={'Date commences'}
             placeholder="Enter here"
             fullWidth  
-            disabled={props?.showDetails}
+            disabled={props?.showDetails||props?.detailsSaved}
             size="small"  
             value={work_details} 
             
@@ -428,7 +428,7 @@ export function SectionTwoTab(props) {
             type="file"
             id="hnsfile"     
             name="hnsfile"
-            disabled={props.showDetails}
+            disabled={props.showDetails||props?.detailsSaved}
             style={{ 
                 cursor: "pointer",
                position: "absolute",
