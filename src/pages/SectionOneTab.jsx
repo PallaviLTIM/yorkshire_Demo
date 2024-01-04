@@ -1,7 +1,8 @@
 import {  Box, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography, Select,MenuItem, Autocomplete } from '@mui/material';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+// import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import {useEffect, useState} from "react";
 import { useForm } from 'react-hook-form';
+import { IsDataFromAPI, AuthUserDetails, Sites, ContractorUserDetails,ContractorPersonData } from './DataCollection';
 
 
 export function SectionOneTab(props) {
@@ -23,6 +24,7 @@ export function SectionOneTab(props) {
  
 
   useEffect(() => {
+    IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setSiteOptions(Sites) :
     fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/sites')
        .then((response) => response.json())
        .then((data) => {
@@ -35,6 +37,7 @@ export function SectionOneTab(props) {
 
   
   useEffect(() => {
+    IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setAuthorizedPersonDetails(AuthUserDetails) :
     fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/authorized_person')
        .then((response) => response.json())
        .then((data) => {
@@ -46,6 +49,7 @@ export function SectionOneTab(props) {
  }, []);
 
  useEffect(() => {
+  IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setContractorDetails(ContractorUserDetails) :    
   fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/contractor')
      .then((response) => response.json())
      .then((data) => {
@@ -58,6 +62,7 @@ export function SectionOneTab(props) {
 
 
 useEffect(() => {
+  IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setContractorRepDetails(ContractorUserDetails) : 
   fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/contractor')
      .then((response) => response.json())
      .then((data) => {
@@ -70,6 +75,7 @@ useEffect(() => {
 
 
 useEffect(() => {
+  IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setCertificates(ContractorPersonData) : 
   fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates')
      .then((response) => response.json())
      .then((data) => {
@@ -138,7 +144,7 @@ useEffect(() => {
 
   };
   return (
-    <Box p="15px" className="overflow-cls1"> 
+    <Box p="15px" className="tab-cls"> 
        <form onSubmit={handleSubmit(onSubmit)} id="hook-form">  
           <Grid container rowSpacing={2} columnSpacing={3} mt='2px'>
            

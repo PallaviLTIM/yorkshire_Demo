@@ -13,7 +13,7 @@ function Profile(){
             <Grid xs={3}>
               <Sidebar></Sidebar>
             </Grid>
-            <Grid xs={9} className='mt-10'>
+            <Grid xs={9} className='mt-10 overflow-cls'>
               <ProfileForm></ProfileForm>
             </Grid>
           </Grid>

@@ -4,7 +4,7 @@ import {  Box,Grid, TextField, Typography} from '@mui/material';
 
 function Handover() {
   return (
-    <Box p="15px">   
+    <Box p="15px" className="tab-cls">   
           <Typography fontWeight="600" color="#131C42">Handover/Handback</Typography>
           <Box border="1px solid #D8D8D8" padding="10px" mt="20px">
           <Grid container rowSpacing={2} columnSpacing={3} mt='2px'>     

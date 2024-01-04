@@ -3,6 +3,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FileUploadIcon from '@mui/icons-material/FileUpload'; 
 import {useEffect, useState} from "react";
 import { useForm } from 'react-hook-form';
+import { Sites, EquipmentDetails, IsDataFromAPI, Certificates } from './DataCollection';
 
 export function SectionTwoTab(props) {
   const [location_details, setLocationDetails] = useState('');
@@ -23,6 +24,7 @@ export function SectionTwoTab(props) {
   const [certificates, setCertificates] = useState([]);
 
   useEffect(() => {
+    IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setCertificates(Certificates) :
     fetch('https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates')
        .then((response) => response.json())
        .then((data) => {
@@ -34,59 +36,27 @@ export function SectionTwoTab(props) {
   }, []);
 
   useEffect(() => {
-    let data = [  
-        {    "id": 101,    "name": "Sewage Pump",    "description": "Yorkshire Sewage Pumping Station"  }, 
-        {    "id": 102,    "name": "Water Reservoir",    "description": "Yorkshire Water Reservoir Station" },
-        {    "id": 103,    "name": "Water Motor", "description": "Yorkshire Water heavy motor" }
-    ];
-    setEquipmentDetailsOptions(data);
-    // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/equipments')
-    //    .then((response) => response.json())
-    //    .then((data) => {
-    //     setEquipmentDetailsOptions(data);
-    //    })
-    //    .catch((err) => {
-    //       console.log(err.message);
-    //    });
+    IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setEquipmentDetailsOptions(EquipmentDetails) :
+    fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/equipments')
+       .then((response) => response.json())
+       .then((data) => {
+        setEquipmentDetailsOptions(data);
+       })
+       .catch((err) => {
+          console.log(err.message);
+       });
  }, []);
 
  useEffect(() => {
-  let data = [
-    {
-      "siteId": "SAJ00123450",
-      "name": "HUTTON LE HOLE/STW",
-      "address": "Hutton Lane, North Yorkshire, S16"
-    },
-    {
-      "siteId": "SAJ00230924",
-      "name": "ABBEY ROAD/NO 1 SPS",
-      "address": "Abbey Road, Yorkshire S17"
-    },
-    {
-      "siteId": "SAJ00230931",
-      "name": "ABBEY ROAD/NO 2 SPS",
-      "address": "Abbey Road, KNAR, Yorkshire"
-    },
-    {
-      "siteId": "SAJ00260519",
-      "name": "ABBEYDALE ROAD 62/2 CSO",
-      "address": "Abbeydale Road, Ilkley LS29 9QE, Yorkshire"
-    },
-    {
-      "siteId": "SAJ00390507",
-      "name": "ABBOTS RD SELBY SEWERAGE - WN - ABBOTS RD SELBY",
-      "address": "ABBOTS ROAD, Whitby, YO22 4EB"
-    }
-  ];
-  setSiteOptions(data);
-  // fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
-  //    .then((response) => response.json())
-  //    .then((data) => {
-  //     setSiteOptions(data);
-  //    })
-  //    .catch((err) => {
-  //       console.log(err.message);
-  //    });
+  IsDataFromAPI && IsDataFromAPI[0].flag === false ?  setSiteOptions(Sites) :
+  fetch('https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites')
+     .then((response) => response.json())
+     .then((data) => {
+      setSiteOptions(data);
+     })
+     .catch((err) => {
+        console.log(err.message);
+     });
 }, []);
 
 
@@ -101,11 +71,9 @@ export function SectionTwoTab(props) {
   useEffect(()=>{
    let d1=new Date(completion_date)
    let d2=new Date(commence_date)
-  let diff= monthDiff(d1,d2)
+   let diff= monthDiff(d1,d2)
   setProjectDuration(diff)
 },[completion_date])
-
-
 
   const addSitePlan = (e) => {
     // console.log(e.target.files);
@@ -162,7 +130,7 @@ export function SectionTwoTab(props) {
   };
 
   return (
-    <Box p="15px">
+    <Box p="15px" className="tab-cls">
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">  
     <Box >
      <Typography>Details(Location on site/working area(s))</Typography>
