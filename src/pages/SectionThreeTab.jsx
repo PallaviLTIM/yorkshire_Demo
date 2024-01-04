@@ -23,7 +23,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export function SectionThreeTab(props) {
   return (
-    <Box p="15px">   
+    <Box p="15px" className="tab-cls">   
           <Typography fontWeight="700" fontSize="18px">Relevant Isolation:</Typography>
           <Typography fontSize="18px" color="#131C42">
               The contractor shall carry out all necessary electrical isolation in accordance with the autherity given under MP24(electrical safety) as authorised persons. Isolations shall only be carried out by prior agreement with the local YW service delivery team.

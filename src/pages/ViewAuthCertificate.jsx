@@ -1,9 +1,9 @@
-import { Grid, Typography,Button,TextField, FormControlLabel, Radio, setType } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Grid, Typography,Button,TextField} from "@mui/material";
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useState } from "react";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { CenterFocusStrong } from "@mui/icons-material";
+// import { CenterFocusStrong } from "@mui/icons-material";
 // import { useNavigate } from "react-router-dom";
 
 export function ViewAuthCertificate(props){
@@ -185,10 +185,10 @@ export function ViewAuthCertificate(props){
             <Grid item xs={12} md={3}>
             </Grid>
             <Grid item xs={12} md={3}>
-            <Button variant="" onClick={onSave('Approve')} sx={{fontWeight: 600}}><CheckCircleIcon sx={{color: 'green'}} backgroundColor="green"/>Approve</Button>
+            <Button variant="outlined" onClick={onSave('Approve')} sx={{fontWeight: 600}}><CheckCircleIcon sx={{color: 'green'}} backgroundColor="green"/>Approve</Button>
             </Grid>
             <Grid item xs={12} md={3}>
-            <Button variant="" onClick={onSave('Reject')} sx={{fontWeight: 600}}> <CancelIcon sx={{color: 'red'}}/>Reject</Button>
+            <Button variant="outlined" onClick={onSave('Reject')} sx={{fontWeight: 600}}> <CancelIcon sx={{color: 'red'}}/>Reject</Button>
             </Grid>
             <Grid item xs={12} md={3}>
             </Grid>

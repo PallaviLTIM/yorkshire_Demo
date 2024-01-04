@@ -18,7 +18,7 @@ function Home(){
         <Grid xs={3}>
           <Sidebar></Sidebar>
         </Grid>
-        <Grid xs={9} className='mt-10'>
+        <Grid xs={9} className='mt-10 overflow-cls'>
           {/* {user && user.role === 'Contractor' ? <DataTable></DataTable> : <AuthCertificateList></AuthCertificateList> }    */}
           <img src={logo} className="img-home" alt={"logo"}/>
         </Grid>

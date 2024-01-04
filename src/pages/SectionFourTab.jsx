@@ -5,22 +5,22 @@ import {  Box, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography 
 function SectionFourTab() {
     
   return (
-    <Box p="15px">
+    <Box p="15px" className="tab-cls">
     
      <Typography fontWeight="700" color="#131C42">Additional Safety Requirements</Typography>
      <Typography mt="5px">Site rules</Typography>
        <TextField
             id="site_rules"
-            name={'Site Rules'}
+            name='SiteRules'
             fullWidth
             multiline
-            rows={2}
+            // rows={4}
             variant="outlined"
             defaultValue={'This is a restricted handover. This certificate only hand-over control and possession of the low voltage electrical system, and a practical working area around it. If the working area extends into a confined space the contractor will take possession of the confined space for the duration of the activity. This certificate does not hand-over the site, operational responsibility for the site (or equipment being worked on), or responsibility for site security. This certificate is only in force when the contractor is present on site and carrying out the works, at all other times the YW service delivery team retains control and posession of the electrical system and working area.'}
           />
-            <Typography mt="10px">Site/emergency procedures</Typography>
+            {/* <Typography mt="10px">Site/emergency procedures</Typography>
        <TextField
-            id="site_rules"
+            id="site_rules0"
             name={'Site Rules'}
             fullWidth
             multiline
@@ -56,7 +56,7 @@ function SectionFourTab() {
             multiline
             rows={2}
             variant="outlined"
-          />       
+          />        */}
     </Box>
   );
 }

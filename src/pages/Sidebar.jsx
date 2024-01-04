@@ -5,13 +5,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import MailIcon from '@mui/icons-material/Mail';
 // import Header from './Header'
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 const drawerWidth = 200;
 
 export default function Sidebar() {
-  const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );  
-  const { token, user } = userDetails;
+  // const userDetails = useSelector((state)=> state && state.commonReducer && state.commonReducer.user );  
+  // const { token, user } = userDetails;
   return (
     <>
     {/* <Header></Header> */}

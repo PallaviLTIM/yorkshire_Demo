@@ -3,7 +3,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 export function Notes() {
   return (
-    <Box p="15px">   
+    <Box p="15px" className="tab-cls">   
           <Typography fontWeight="600" color="#131C42">Notes</Typography>
           <Typography mt="5px">Your Notes</Typography>
           <TextField

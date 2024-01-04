@@ -38,12 +38,14 @@ function Certificate() {
         <Grid xs={3}>
           <Sidebar></Sidebar>
         </Grid>
-        <Grid xs={9} className='mt-10 overflow-cls'>
+        <Grid xs={9} >
+          <div className='mt-10 overflow-cls'>
         {user && user.role === 'Contractor' ? <DataTable></DataTable> : <AuthCertificateList></AuthCertificateList> }
           {/* <Typography variant="h6" color="#2441E5" noWrap component="div">
           EITSA Handover / EITSA Handback Certificate
           </Typography>
         <TabComponent></TabComponent> */}
+        </div>
         </Grid>
       </Grid>
     </Box>      

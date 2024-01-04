@@ -9,20 +9,39 @@ body{
     background-size: auto;
 }
 
-.css-1nv1o5k-MuiGrid-root{
-    
+/* .css-1nv1o5k-MuiGrid-root{
+
+} */
+.css-zxdg2z{
+    display: none;
 }
 
 .overflow-cls{
-    overflow-y: scroll;
-    height: 400px;
+    /* overflow-y: scroll;
+    margin-top: 100px !important;
+    height: 400px; */
     /* margin-bottom: 20px; */
+    width: 1000px !important;
+    margin-left: -10px !important;
+    margin-top: 150px !important;
+    /* height: 400px; */
+    /* overflow-y: scroll; */
+}
+
+.css-ckyhk3{
+    margin-top: -30px;
+}
+
+.nav-tabs{
+    margin-top: -25px;
 }
 
 .css-wvz34p{
     width: 1000px !important;
     margin-left: -10px !important;
-    margin-top: 15px;
+    /* margin-top: 80px; */
+    height: 400px;
+    overflow-y: scroll;
 }
 
 .img-home{
@@ -96,6 +115,15 @@ body{
     padding-top: 30px;
     padding-bottom: 30px;
     padding-right: 0px;
+    overflow-y: scroll;
+    height: 450px;
+    margin-top: 0px;
+}
+
+.tab-cls{
+    height:400px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
 }
 
 .logout-text{
@@ -122,7 +150,7 @@ body{
 
 }
 .mt-10{
-    margin-top: 87px !important;
+    /* margin-top: 87px !important; */
     margin-left: -60px !important;
 }
 .img_login{

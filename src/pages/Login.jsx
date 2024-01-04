@@ -6,6 +6,7 @@ import logo from '../images/logo.png' // relative path to image
 import { Link, useNavigate, navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from '../store/reducers/common-reducers';
+import {AuthPersonData, ContractorPersonData, IsDataFromAPI, AuthUserDetails, ContractorUserDetails, Sites, EquipmentDetails, Certificates } from './DataCollection';
 
 function Login() {
    const dispatch = useDispatch();
@@ -108,6 +109,14 @@ function Login() {
               "user": response.user
             })
           );
+          localStorage.setItem('AuthPersonData', JSON.stringify(AuthPersonData));
+          localStorage.setItem('ContractorPersonData', JSON.stringify(ContractorPersonData));
+          localStorage.setItem('IsDataFromAPI', JSON.stringify(IsDataFromAPI));
+          localStorage.setItem('AuthUserDetails', JSON.stringify(AuthUserDetails));
+          localStorage.setItem('ContractorUserDetails', JSON.stringify(ContractorUserDetails));
+          localStorage.setItem('Sites', JSON.stringify(Sites));
+          localStorage.setItem('EquipmentDetails', JSON.stringify(EquipmentDetails));
+          localStorage.setItem('Certificates', JSON.stringify(Certificates));
           navigate("/home");
         }
       }
