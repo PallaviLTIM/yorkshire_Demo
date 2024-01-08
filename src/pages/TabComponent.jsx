@@ -48,7 +48,7 @@ function TabComponent(props) {
           YW is submitted for Approval!
         </Alert>
       </Snackbar>
-    <Box display="flex" className="mb-5"  justifyContent="end">
+    <Box display="flex" className="mb-5 mt-65"  justifyContent="end">
       <Button variant="outlined" sx={{mr:"5px"}} onClick={handleSaveClick}>Submit YW for Approval</Button>
       {showDetails?<Button type='edit' variant="contained" form="hook-form" onClick={handleEdit}>Edit</Button>:
       <Button type='submit' variant="contained" form="hook-form" onClick={handleSave}>Save</Button>}

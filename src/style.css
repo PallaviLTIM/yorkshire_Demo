@@ -92,7 +92,7 @@ body{
     background: #124A87 !important;
     color: #2FB5DE !important;
     font-weight: 500 !important;
-    height: 1000px !important;
+    height: 480px !important;
     /* height: auto; */
     margin-top: 0px;
     width: 184px;
@@ -148,6 +148,9 @@ body{
     border: 1px;
     gap: 12px; */
 
+}
+.mt-65{
+    margin-top: -30px !important;
 }
 .mt-10{
     /* margin-top: 87px !important; */
