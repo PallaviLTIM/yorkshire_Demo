@@ -89,8 +89,8 @@ function Handover() {
                 id="comments"
                 name={'Comments'}
                 fullWidth
-                multiline
-                rows={3}
+                // multiline
+                // rows={3}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -99,8 +99,8 @@ function Handover() {
                 id="comments"
                 name={'Comments'}
                 fullWidth
-                multiline
-                rows={3}
+                // multiline
+                // rows={3}
                 />
             </Grid>          
             </Grid>
